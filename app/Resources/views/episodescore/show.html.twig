@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Episodescore</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ episodeScore.id }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ episodeScore.user }}</td>
+            </tr>
+            <tr>
+                <th>Episode</th>
+                <td>{{ episodeName }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ episodeScore.value }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('episodescore_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('episodescore_edit', { 'id': episodeScore.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

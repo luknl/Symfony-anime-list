@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Episodescores list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>Episode</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for episodeScore in episodeScores %}
+            <tr>
+                <td><a href="{{ path('episodescore_show', { 'id': episodeScore.id }) }}">{{ episodeScore.id }}</a></td>
+                <td>{{ episodeScore.user }}</td>
+                <td>{{ episodeName[episodeScore.id]  }}</td>
+                <td>{{ episodeScore.value }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('episodescore_show', { 'id': episodeScore.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('episodescore_edit', { 'id': episodeScore.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('episodescore_new') }}">Create a new episodeScore</a>
+        </li>
+    </ul>
+{% endblock %}
