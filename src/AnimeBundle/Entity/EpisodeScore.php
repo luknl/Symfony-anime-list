@@ -22,9 +22,8 @@ class EpisodeScore
     private $id;
 
     /**
-     * @var \stdClass
-     *
-     * @ORM\Column(name="user", type="object")
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     private $user;
 
