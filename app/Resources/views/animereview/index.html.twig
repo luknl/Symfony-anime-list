@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Animereviews list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>Anime</th>
+                <th>Value</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for animeReview in animeReviews %}
+            <tr>
+                <td><a href="{{ path('animereview_show', { 'id': animeReview.id }) }}">{{ animeReview.id }}</a></td>
+                <td>{{ animeReview.user }}</td>
+                <td>{{ animeName[animeReview.id] }}</td>
+                <td>{{ animeReview.value }}</td>
+                <td>{% if animeReview.created %}{{ animeReview.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('animereview_show', { 'id': animeReview.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('animereview_edit', { 'id': animeReview.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('animereview_new') }}">Create a new animeReview</a>
+        </li>
+    </ul>
+{% endblock %}

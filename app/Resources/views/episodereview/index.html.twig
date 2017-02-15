@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Episodereviews list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>Episode</th>
+                <th>Value</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for episodeReview in episodeReviews %}
+            <tr>
+                <td><a href="{{ path('episodereview_show', { 'id': episodeReview.id }) }}">{{ episodeReview.id }}</a></td>
+                <td>{{ episodeReview.user }}</td>
+                <td>{{ episodeName[episodeReview.id] }}</td>
+                <td>{{ episodeReview.value }}</td>
+                <td>{% if episodeReview.created %}{{ episodeReview.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('episodereview_show', { 'id': episodeReview.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('episodereview_edit', { 'id': episodeReview.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('episodereview_new') }}">Create a new episodeReview</a>
+        </li>
+    </ul>
+{% endblock %}

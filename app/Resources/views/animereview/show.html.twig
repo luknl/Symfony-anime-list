@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Animereview</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ animeReview.id }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ animeReview.user }}</td>
+            </tr>
+            <tr>
+                <th>Anime</th>
+                <td>{{ animeName }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ animeReview.value }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if animeReview.created %}{{ animeReview.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('animereview_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('animereview_edit', { 'id': animeReview.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
