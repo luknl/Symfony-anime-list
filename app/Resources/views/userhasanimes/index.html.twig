@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Userhasanimes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>Anime</th>
+                <th>Favori</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for userHasAnime in userHasAnimes %}
+            <tr>
+                <td><a href="{{ path('userhasanimes_show', { 'id': userHasAnime.id }) }}">{{ userHasAnime.id }}</a></td>
+                <td>{{ userHasAnime.user }}</td>
+                <td>{{ animeName[userHasAnime.id] }}</td>
+                <td>{% if userHasAnime.favori %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('userhasanimes_show', { 'id': userHasAnime.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('userhasanimes_edit', { 'id': userHasAnime.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userhasanimes_new') }}">Create a new userHasAnime</a>
+        </li>
+    </ul>
+{% endblock %}

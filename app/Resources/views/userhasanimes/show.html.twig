@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Userhasanime</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ userHasAnime.id }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ userHasAnime.user }}</td>
+            </tr>
+            <tr>
+                <th>Anime</th>
+                <td>{{ animeName }}</td>
+            </tr>
+            <tr>
+                <th>Favori</th>
+                <td>{% if userHasAnime.favori %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userhasanimes_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('userhasanimes_edit', { 'id': userHasAnime.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

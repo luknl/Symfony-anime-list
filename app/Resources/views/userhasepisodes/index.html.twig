@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Userhasepisodes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>User</th>
+                <th>Episode</th>
+                <th>Viewed</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for userHasEpisode in userHasEpisodes %}
+            <tr>
+                <td><a href="{{ path('userhasepisodes_show', { 'id': userHasEpisode.id }) }}">{{ userHasEpisode.id }}</a></td>
+                <td>{{ userHasEpisode.user }}</td>
+                <td>{{ episodeName[userHasEpisode.id] }}</td>
+                <td>{% if userHasEpisode.viewed %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('userhasepisodes_show', { 'id': userHasEpisode.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('userhasepisodes_edit', { 'id': userHasEpisode.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userhasepisodes_new') }}">Create a new userHasEpisode</a>
+        </li>
+    </ul>
+{% endblock %}
