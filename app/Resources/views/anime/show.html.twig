@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Anime</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ anime.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ anime.name }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ anime.type }}</td>
+            </tr>
+            <tr>
+                <th>Genre</th>
+                <td>{{ anime.genre }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>{{ anime.picture }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ anime.status }}</td>
+            </tr>
+            <tr>
+                <th>Aired</th>
+                <td>{% if anime.aired %}{{ anime.aired|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Producers</th>
+                <td>{{ anime.producers }}</td>
+            </tr>
+            <tr>
+                <th>Licensors</th>
+                <td>{{ anime.licensors }}</td>
+            </tr>
+            <tr>
+                <th>Studios</th>
+                <td>{{ anime.studios }}</td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>{{ anime.source }}</td>
+            </tr>
+            <tr>
+                <th>Duration</th>
+                <td>{{ anime.duration }}</td>
+            </tr>
+            <tr>
+                <th>Synopsis</th>
+                <td>{{ anime.synopsis }}</td>
+            </tr>
+            <tr>
+                <th>Background</th>
+                <td>{{ anime.background }}</td>
+            </tr>
+            <tr>
+                <th>Rating</th>
+                <td>{{ anime.rating }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('anime_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('anime_edit', { 'id': anime.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
