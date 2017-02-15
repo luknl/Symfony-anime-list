@@ -30,7 +30,7 @@
                 <td><a href="{{ path('anime_show', { 'id': anime.id }) }}">{{ anime.id }}</a></td>
                 <td>{{ anime.name }}</td>
                 <td>{{ typeName[anime.id] }}</td>
-                <td>{{ anime.genre }}</td>
+                <td>{{ genreName[anime.id] }}</td>
                 <td>{{ anime.picture }}</td>
                 <td>{{ anime.status }}</td>
                 <td>{% if anime.aired %}{{ anime.aired|date('Y-m-d H:i:s') }}{% endif %}</td>

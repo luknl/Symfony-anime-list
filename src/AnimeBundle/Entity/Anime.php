@@ -35,9 +35,8 @@ class Anime
     private $type;
 
     /**
-     * @var \stdClass
-     *
-     * @ORM\Column(name="genre", type="object")
+     * @ORM\ManyToOne(targetEntity="AnimeGenre")
+     * @ORM\JoinColumn(name="genre_id", referencedColumnName="id", nullable=false)
      */
     private $genre;
 

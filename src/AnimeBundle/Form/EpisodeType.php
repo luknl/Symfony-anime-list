@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class AnimeType extends AbstractType
+class EpisodeType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,33 +16,17 @@ class AnimeType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('type', EntityType::class, array(
-                // query choices from this entity
-                'class' => 'AnimeBundle:AnimeType',
-                // use the User.username property as the visible option string
-                'choice_label' => 'name',
-                'multiple' => false,
-                'expanded' => false, // true : radio, false : select
-            ))
-            ->add('genre', EntityType::class, array(
-                // query choices from this entity
-                'class' => 'AnimeBundle:AnimeGenre',
-                // use the User.username property as the visible option string
-                'choice_label' => 'name',
-                'multiple' => false,
-                'expanded' => false, // true : radio, false : select
-            ))
-            ->add('picture')
-            ->add('status')
-            ->add('aired')
-            ->add('producers')
-            ->add('licensors')
-            ->add('studios')
-            ->add('source')
             ->add('duration')
-            ->add('synopsis')
-            ->add('background')
-            ->add('rating')
+            ->add('description')
+            ->add('aired')
+            ->add('anime', EntityType::class, array(
+                // query choices from this entity
+                'class' => 'AnimeBundle:Anime',
+                // use the User.username property as the visible option string
+                'choice_label' => 'name',
+                'multiple' => false,
+                'expanded' => false, // true : radio, false : select
+            ))
         ;
     }
     
@@ -52,7 +36,7 @@ class AnimeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AnimeBundle\Entity\Anime'
+            'data_class' => 'AnimeBundle\Entity\Episode'
         ));
     }
 
@@ -61,7 +45,7 @@ class AnimeType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'animebundle_anime';
+        return 'animebundle_episode';
     }
 
 

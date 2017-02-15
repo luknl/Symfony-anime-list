@@ -27,13 +27,16 @@ class AnimeController extends Controller
         $animes = $em->getRepository('AnimeBundle:Anime')->findAll();
 
         $typeName = [];
+        $genreName = [];
         foreach($animes as $anime) {
             $typeName[$anime->getId()] = $anime->getType()->getName();
+            $genreName[$anime->getId()] = $anime->getGenre()->getName();
         }
 
         return $this->render('anime/index.html.twig', array(
             'animes' => $animes,
             'typeName' => $typeName,
+            'genreName' => $genreName,
         ));
     }
 
@@ -74,10 +77,12 @@ class AnimeController extends Controller
         $deleteForm = $this->createDeleteForm($anime);
 
         $typeName = $anime->getType()->getName();
+        $genreName = $anime->getGenre()->getName();
 
         return $this->render('anime/show.html.twig', array(
             'anime' => $anime,
             'typeName' => $typeName,
+            'genreName' => $genreName,
             'delete_form' => $deleteForm->createView(),
         ));
     }
