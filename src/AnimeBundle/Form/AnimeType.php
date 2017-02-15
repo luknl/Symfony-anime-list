@@ -5,6 +5,7 @@ namespace AnimeBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class AnimeType extends AbstractType
 {
@@ -13,7 +14,29 @@ class AnimeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('type')->add('genre')->add('picture')->add('status')->add('aired')->add('producers')->add('licensors')->add('studios')->add('source')->add('duration')->add('synopsis')->add('background')->add('rating')        ;
+        $builder
+            ->add('name')
+            ->add('type', EntityType::class, array(
+                // query choices from this entity
+                'class' => 'AnimeBundle:AnimeType',
+                // use the User.username property as the visible option string
+                'choice_label' => 'name',
+                'multiple' => false,
+                'expanded' => false, // true : radio, false : select
+            ))
+            ->add('genre')
+            ->add('picture')
+            ->add('status')
+            ->add('aired')
+            ->add('producers')
+            ->add('licensors')
+            ->add('studios')
+            ->add('source')
+            ->add('duration')
+            ->add('synopsis')
+            ->add('background')
+            ->add('rating')
+        ;
     }
     
     /**

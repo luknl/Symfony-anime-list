@@ -29,7 +29,7 @@
             <tr>
                 <td><a href="{{ path('anime_show', { 'id': anime.id }) }}">{{ anime.id }}</a></td>
                 <td>{{ anime.name }}</td>
-                <td>{{ anime.type }}</td>
+                <td>{{ typeName[anime.id] }}</td>
                 <td>{{ anime.genre }}</td>
                 <td>{{ anime.picture }}</td>
                 <td>{{ anime.status }}</td>

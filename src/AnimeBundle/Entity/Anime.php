@@ -30,7 +30,7 @@ class Anime
 
     /**
      * @ORM\ManyToOne(targetEntity="AnimeType")
-     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=false)
      */
     private $type;
 
