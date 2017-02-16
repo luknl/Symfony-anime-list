@@ -71,14 +71,14 @@ class EpisodeScoreController extends Controller
      */
     public function showAction(EpisodeScore $episodeScore)
     {
-        $deleteForm = $this->createDeleteForm($episodeScore);
+        #$deleteForm = $this->createDeleteForm($episodeScore);
 
         $episodeName = $episodeScore->getEpisode()->getName();
 
         return $this->render('episodescore/show.html.twig', array(
             'episodeScore' => $episodeScore,
             'episodeName' => $episodeName,
-            'delete_form' => $deleteForm->createView(),
+            #'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -88,7 +88,7 @@ class EpisodeScoreController extends Controller
      * @Route("/{id}/edit", name="episodescore_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, EpisodeScore $episodeScore)
+    /*public function editAction(Request $request, EpisodeScore $episodeScore)
     {
         $deleteForm = $this->createDeleteForm($episodeScore);
         $editForm = $this->createForm('AnimeBundle\Form\EpisodeScoreType', $episodeScore);
@@ -105,7 +105,7 @@ class EpisodeScoreController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Deletes a episodeScore entity.
@@ -113,7 +113,7 @@ class EpisodeScoreController extends Controller
      * @Route("/{id}", name="episodescore_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, EpisodeScore $episodeScore)
+    /*public function deleteAction(Request $request, EpisodeScore $episodeScore)
     {
         $form = $this->createDeleteForm($episodeScore);
         $form->handleRequest($request);
@@ -125,7 +125,7 @@ class EpisodeScoreController extends Controller
         }
 
         return $this->redirectToRoute('episodescore_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a episodeScore entity.

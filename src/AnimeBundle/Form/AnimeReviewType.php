@@ -25,7 +25,6 @@ class AnimeReviewType extends AbstractType
                 'expanded' => false, // true : radio, false : select
             ))
             ->add('value')
-            ->add('created')
         ;
     }
     

@@ -48,6 +48,7 @@ class EpisodeReviewController extends Controller
         $episodeReview = new Episodereview();
         $form = $this->createForm('AnimeBundle\Form\EpisodeReviewType', $episodeReview);
         $form->handleRequest($request);
+        #$episodeReview->setCreated( new \DateTime('now') );
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -71,14 +72,14 @@ class EpisodeReviewController extends Controller
      */
     public function showAction(EpisodeReview $episodeReview)
     {
-        $deleteForm = $this->createDeleteForm($episodeReview);
+        #$deleteForm = $this->createDeleteForm($episodeReview);
 
         $episodeName = $episodeReview->getEpisode()->getName();
 
         return $this->render('episodereview/show.html.twig', array(
             'episodeReview' => $episodeReview,
             'episodeName' => $episodeName,
-            'delete_form' => $deleteForm->createView(),
+            #'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -88,7 +89,7 @@ class EpisodeReviewController extends Controller
      * @Route("/{id}/edit", name="episodereview_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, EpisodeReview $episodeReview)
+    /*public function editAction(Request $request, EpisodeReview $episodeReview)
     {
         $deleteForm = $this->createDeleteForm($episodeReview);
         $editForm = $this->createForm('AnimeBundle\Form\EpisodeReviewType', $episodeReview);
@@ -105,15 +106,14 @@ class EpisodeReviewController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
-
+    }*/
     /**
      * Deletes a episodeReview entity.
      *
      * @Route("/{id}", name="episodereview_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, EpisodeReview $episodeReview)
+    /*public function deleteAction(Request $request, EpisodeReview $episodeReview)
     {
         $form = $this->createDeleteForm($episodeReview);
         $form->handleRequest($request);
@@ -125,7 +125,7 @@ class EpisodeReviewController extends Controller
         }
 
         return $this->redirectToRoute('episodereview_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a episodeReview entity.

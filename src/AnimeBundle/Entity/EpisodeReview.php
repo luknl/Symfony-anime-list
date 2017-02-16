@@ -21,6 +21,11 @@ class EpisodeReview
      */
     private $id;
 
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+    }
+
     /**
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
@@ -153,5 +158,6 @@ class EpisodeReview
     {
         return $this->created;
     }
+
 }
 

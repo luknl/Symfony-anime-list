@@ -48,6 +48,7 @@ class AnimeReviewController extends Controller
         $animeReview = new Animereview();
         $form = $this->createForm('AnimeBundle\Form\AnimeReviewType', $animeReview);
         $form->handleRequest($request);
+        #$animeReview->setCreated( new \DateTime('now') );
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -71,14 +72,14 @@ class AnimeReviewController extends Controller
      */
     public function showAction(AnimeReview $animeReview)
     {
-        $deleteForm = $this->createDeleteForm($animeReview);
+        #$deleteForm = $this->createDeleteForm($animeReview);
 
         $animeName = $animeReview->getAnime()->getName();
 
         return $this->render('animereview/show.html.twig', array(
             'animeReview' => $animeReview,
             'animeName' => $animeName,
-            'delete_form' => $deleteForm->createView(),
+            #'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -88,7 +89,7 @@ class AnimeReviewController extends Controller
      * @Route("/{id}/edit", name="animereview_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, AnimeReview $animeReview)
+    /*public function editAction(Request $request, AnimeReview $animeReview)
     {
         $deleteForm = $this->createDeleteForm($animeReview);
         $editForm = $this->createForm('AnimeBundle\Form\AnimeReviewType', $animeReview);
@@ -105,7 +106,7 @@ class AnimeReviewController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Deletes a animeReview entity.
@@ -113,7 +114,7 @@ class AnimeReviewController extends Controller
      * @Route("/{id}", name="animereview_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, AnimeReview $animeReview)
+    /*public function deleteAction(Request $request, AnimeReview $animeReview)
     {
         $form = $this->createDeleteForm($animeReview);
         $form->handleRequest($request);
@@ -125,7 +126,7 @@ class AnimeReviewController extends Controller
         }
 
         return $this->redirectToRoute('animereview_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a animeReview entity.

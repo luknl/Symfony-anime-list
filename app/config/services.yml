@@ -32,3 +32,33 @@ services:
         arguments: [~, AnimeBundle\Entity\Episode, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Episodes }
+    admin.animeScore:
+        class: AnimeBundle\Admin\AnimeScoreAdmin
+        arguments: [~, AnimeBundle\Entity\AnimeScore, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Animes Scores }
+    admin.episodeScore:
+        class: AnimeBundle\Admin\EpisodeScoreAdmin
+        arguments: [~, AnimeBundle\Entity\EpisodeScore, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Episodes Scores }
+    admin.animeReview:
+        class: AnimeBundle\Admin\AnimeReviewAdmin
+        arguments: [~, AnimeBundle\Entity\AnimeReview, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Animes Reviews }
+    admin.episodeReview:
+        class: AnimeBundle\Admin\EpisodeReviewAdmin
+        arguments: [~, AnimeBundle\Entity\EpisodeReview, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Episodes Reviews }
+    admin.userHasAnimes:
+        class: AnimeBundle\Admin\UserHasAnimesAdmin
+        arguments: [~, AnimeBundle\Entity\UserHasAnimes, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User Has Animes }
+    admin.userHasEpisodes:
+        class: AnimeBundle\Admin\UserHasEpisodesAdmin
+        arguments: [~, AnimeBundle\Entity\UserHasEpisodes, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User Has Episodes }
