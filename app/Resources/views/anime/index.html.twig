@@ -47,9 +47,6 @@
                         <li>
                             <a href="{{ path('anime_show', { 'id': anime.id }) }}">show</a>
                         </li>
-                        <li>
-                            <a href="{{ path('anime_edit', { 'id': anime.id }) }}">edit</a>
-                        </li>
                     </ul>
                 </td>
             </tr>
@@ -58,8 +55,5 @@
     </table>
 
     <ul>
-        <li>
-            <a href="{{ path('anime_new') }}">Create a new anime</a>
-        </li>
     </ul>
 {% endblock %}

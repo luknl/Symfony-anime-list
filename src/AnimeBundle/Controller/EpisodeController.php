@@ -43,7 +43,7 @@ class EpisodeController extends Controller
      * @Route("/new", name="episode_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    /*public function newAction(Request $request)
     {
         $episode = new Episode();
         $form = $this->createForm('AnimeBundle\Form\EpisodeType', $episode);
@@ -61,7 +61,7 @@ class EpisodeController extends Controller
             'episode' => $episode,
             'form' => $form->createView(),
         ));
-    }
+    }*/
 
     /**
      * Finds and displays a episode entity.
@@ -71,14 +71,14 @@ class EpisodeController extends Controller
      */
     public function showAction(Episode $episode)
     {
-        $deleteForm = $this->createDeleteForm($episode);
+        #$deleteForm = $this->createDeleteForm($episode);
 
         $animeName = $episode->getAnime()->getName();
 
         return $this->render('episode/show.html.twig', array(
             'episode' => $episode,
             'animeName' => $animeName,
-            'delete_form' => $deleteForm->createView(),
+            #'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -88,7 +88,7 @@ class EpisodeController extends Controller
      * @Route("/{id}/edit", name="episode_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Episode $episode)
+    /*public function editAction(Request $request, Episode $episode)
     {
         $deleteForm = $this->createDeleteForm($episode);
         $editForm = $this->createForm('AnimeBundle\Form\EpisodeType', $episode);
@@ -105,7 +105,7 @@ class EpisodeController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Deletes a episode entity.
@@ -113,7 +113,7 @@ class EpisodeController extends Controller
      * @Route("/{id}", name="episode_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Episode $episode)
+    /*public function deleteAction(Request $request, Episode $episode)
     {
         $form = $this->createDeleteForm($episode);
         $form->handleRequest($request);
@@ -125,7 +125,7 @@ class EpisodeController extends Controller
         }
 
         return $this->redirectToRoute('episode_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a episode entity.
@@ -134,12 +134,12 @@ class EpisodeController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Episode $episode)
+    /*private function createDeleteForm(Episode $episode)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('episode_delete', array('id' => $episode->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
-    }
+    }*/
 }

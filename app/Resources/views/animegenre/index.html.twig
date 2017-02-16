@@ -21,9 +21,6 @@
                         <li>
                             <a href="{{ path('animegenre_show', { 'id': animeGenre.id }) }}">show</a>
                         </li>
-                        <li>
-                            <a href="{{ path('animegenre_edit', { 'id': animeGenre.id }) }}">edit</a>
-                        </li>
                     </ul>
                 </td>
             </tr>
@@ -31,9 +28,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('animegenre_new') }}">Create a new animeGenre</a>
-        </li>
-    </ul>
 {% endblock %}

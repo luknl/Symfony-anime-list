@@ -57,7 +57,7 @@ class AnimeAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name')
+            ->addIdentifier('name')
             ->add('type.name')
             ->add('genre.name')
         ;

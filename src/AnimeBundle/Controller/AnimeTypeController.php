@@ -37,7 +37,7 @@ class AnimeTypeController extends Controller
      * @Route("/new", name="animetype_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    /*public function newAction(Request $request)
     {
         $animeType = new Animetype();
         $form = $this->createForm('AnimeBundle\Form\AnimeTypeType', $animeType);
@@ -55,7 +55,7 @@ class AnimeTypeController extends Controller
             'animeType' => $animeType,
             'form' => $form->createView(),
         ));
-    }
+    }*/
 
     /**
      * Finds and displays a animeType entity.
@@ -65,11 +65,11 @@ class AnimeTypeController extends Controller
      */
     public function showAction(AnimeType $animeType)
     {
-        $deleteForm = $this->createDeleteForm($animeType);
+        #$deleteForm = $this->createDeleteForm($animeType);
 
         return $this->render('animetype/show.html.twig', array(
             'animeType' => $animeType,
-            'delete_form' => $deleteForm->createView(),
+            #'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -79,7 +79,7 @@ class AnimeTypeController extends Controller
      * @Route("/{id}/edit", name="animetype_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, AnimeType $animeType)
+    /*public function editAction(Request $request, AnimeType $animeType)
     {
         $deleteForm = $this->createDeleteForm($animeType);
         $editForm = $this->createForm('AnimeBundle\Form\AnimeTypeType', $animeType);
@@ -96,7 +96,7 @@ class AnimeTypeController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Deletes a animeType entity.
@@ -104,7 +104,7 @@ class AnimeTypeController extends Controller
      * @Route("/{id}", name="animetype_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, AnimeType $animeType)
+    /*public function deleteAction(Request $request, AnimeType $animeType)
     {
         $form = $this->createDeleteForm($animeType);
         $form->handleRequest($request);
@@ -116,7 +116,7 @@ class AnimeTypeController extends Controller
         }
 
         return $this->redirectToRoute('animetype_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a animeType entity.

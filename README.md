@@ -82,3 +82,4 @@ Créer un super user admin : `sf fos:user:create admin admin@admin.com admin --s
 => Besoin d'être admin pour accéder au backoffice (au chemin /admin)
 
 
+Toutes les entities peuvent se gérer par les admins dans le back-office. Les fonctions de CRUD et pages liés qui avaient été générées à la base ont été commentées et sont normalement pas nécessaires puisqu'accessbiles dans le back-office.

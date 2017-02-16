@@ -29,9 +29,6 @@
                         <li>
                             <a href="{{ path('episode_show', { 'id': episode.id }) }}">show</a>
                         </li>
-                        <li>
-                            <a href="{{ path('episode_edit', { 'id': episode.id }) }}">edit</a>
-                        </li>
                     </ul>
                 </td>
             </tr>
@@ -39,9 +36,4 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('episode_new') }}">Create a new episode</a>
-        </li>
-    </ul>
 {% endblock %}

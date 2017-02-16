@@ -46,7 +46,7 @@ class AnimeController extends Controller
      * @Route("/new", name="anime_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    /*public function newAction(Request $request)
     {
         $anime = new Anime();
         $form = $this->createForm('AnimeBundle\Form\AnimeType', $anime);
@@ -64,7 +64,7 @@ class AnimeController extends Controller
             'anime' => $anime,
             'form' => $form->createView(),
         ));
-    }
+    }*/
 
     /**
      * Finds and displays a anime entity.
@@ -74,7 +74,7 @@ class AnimeController extends Controller
      */
     public function showAction(Anime $anime)
     {
-        $deleteForm = $this->createDeleteForm($anime);
+        #$deleteForm = $this->createDeleteForm($anime);
 
         $typeName = $anime->getType()->getName();
         $genreName = $anime->getGenre()->getName();
@@ -83,7 +83,7 @@ class AnimeController extends Controller
             'anime' => $anime,
             'typeName' => $typeName,
             'genreName' => $genreName,
-            'delete_form' => $deleteForm->createView(),
+            #'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -93,7 +93,7 @@ class AnimeController extends Controller
      * @Route("/{id}/edit", name="anime_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Anime $anime)
+    /*public function editAction(Request $request, Anime $anime)
     {
         $deleteForm = $this->createDeleteForm($anime);
         $editForm = $this->createForm('AnimeBundle\Form\AnimeType', $anime);
@@ -110,7 +110,7 @@ class AnimeController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Deletes a anime entity.
@@ -118,7 +118,7 @@ class AnimeController extends Controller
      * @Route("/{id}", name="anime_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Anime $anime)
+    /*public function deleteAction(Request $request, Anime $anime)
     {
         $form = $this->createDeleteForm($anime);
         $form->handleRequest($request);
@@ -130,7 +130,7 @@ class AnimeController extends Controller
         }
 
         return $this->redirectToRoute('anime_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a anime entity.
@@ -139,12 +139,12 @@ class AnimeController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Anime $anime)
+    /*private function createDeleteForm(Anime $anime)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('anime_delete', array('id' => $anime->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
-    }
+    }*/
 }
