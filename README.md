@@ -1,69 +1,84 @@
-Symfony Standard Edition
+README A REDIGER
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
 
-What's inside?
---------------
 
-The Symfony Standard Edition is configured with the following defaults:
+# Commandes et explications de dev
 
-  * An AppBundle you can use to start coding;
+### Lancer le projet après récupération
 
-  * Twig as the only configured template engine;
 
-  * Doctrine ORM/DBAL;
+* `git clone https://github.com/lien_de_notre_repo`
+* `composer install`
+	- Port : 8889 (dépend de ce qu’on a mis dans MAMP)
+	- database password : root
+* `php bin/symfony_requirements` => Tester si Symfony est bien installé
+(Pas oublier d'allumer MAMP)
+* `sf doctrine:database:create`
+* `sf doctrine:schema:update --force`
+* (Si erreurs `sf doctrine:database:drop` puis recommencer)
+* `sf server:run` pour lancer le serveur
 
-  * Swiftmailer;
+##### Remplir la BDD
+Pour faire les tests avec les formulaires des entités etc : Penser à créer d'abord des datas qui sont nécéssaires à d'autres entités car obligatoirement non NULL.
+Par exemple créer des Types et Genres car ils sont obligatoire pour la création d'Anime
 
-  * Annotations enabled for everything.
+###Autres commandes
 
-It comes pre-configured with the following bundles:
+* `sf debug:container` => Liste tout les services
+* `sf debug:container | grep account` => Liste les services contenant « account » 
+* `sf debug:container app.service.accounting_service` => Toutes les infos sur ce service
+* `sf debug:router` => Vérife les routes
+* `vendor/bin/phpunit` : Lancer le/les test(s) unitaire(s)
 
-  * **FrameworkBundle** - The core Symfony framework bundle
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+### Jointures table 
+Lors de la génération de l'entity : $type object puis dans Entity/Anime.php
+```php
+/**
+* @ORM\ManyToOne(targetEntity="AnimeType")
+* @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=false)
+*/
+private $type;
+```
+Ensuite run `sf doctrine:schema:update --force` pour updater la base de données
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+Dans le formulaire pour les listes déroulantes :
+```php
+->add('type', EntityType::class, array(
+    // query choices from this entity
+    'class' => 'AnimeBundle:AnimeType',
+    // use the User.username property as the visible option string
+    'choice_label' => 'name',
+    'multiple' => false,
+    'expanded' => false, // true : radio, false : select
+))
+```
+Ne pas oublier la ligne 
+```php 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+```
+Pour accéder aux jointures, dans les controllers : 
+```php
+// ...
+$typeName = [];
+foreach($animes as $anime) {
+    $typeName[$anime->getId()] = $anime->getType()->getName();
+}
+return $this->render('anime/index.html.twig', array(
+    // ...
+    typeName' => $typeName,
+));
+```
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+### FOS User Bundle
+Routes d'accès : 
+* /login
+* /register
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+Créer un super user admin : `sf fos:user:create admin admin@admin.com admin --super-admin`
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
+=> Besoin d'être admin pour accéder au backoffice (au chemin /admin)
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.2/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.2/doctrine.html
-[8]:  https://symfony.com/doc/3.2/templating.html
-[9]:  https://symfony.com/doc/3.2/security.html
-[10]: https://symfony.com/doc/3.2/email.html
-[11]: https://symfony.com/doc/3.2/logging.html
-[12]: https://symfony.com/doc/3.2/assetic/asset_management.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html

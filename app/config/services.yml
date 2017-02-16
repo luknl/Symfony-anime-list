@@ -7,3 +7,18 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    admin.anime:
+        class: AnimeBundle\Admin\AnimeAdmin
+        arguments: [~, AnimeBundle\Entity\Anime, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Animes }
+    admin.animeType:
+        class: AnimeBundle\Admin\AnimeTypeAdmin
+        arguments: [~, AnimeBundle\Entity\AnimeType, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Anime Types }
+    admin.animeGenre:
+        class: AnimeBundle\Admin\AnimeGenreAdmin
+        arguments: [~, AnimeBundle\Entity\AnimeGenre, ~]
+        tags:
+             - { name: sonata.admin, manager_type: orm, label: Anime Genres }
