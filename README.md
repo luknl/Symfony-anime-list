@@ -20,9 +20,11 @@ README A REDIGER
 * (Si erreurs `sf doctrine:database:drop` puis recommencer)
 * `sf server:run` pour lancer le serveur
 
-##### Remplir la BDD
+### Remplir la BDD
 Pour faire les tests avec les formulaires des entités etc : Penser à créer d'abord des datas qui sont nécéssaires à d'autres entités car obligatoirement non NULL.
 Par exemple créer des Types et Genres car ils sont obligatoire pour la création d'Anime
+
+* Vous pouvez aussi simplement prendre le fichier SQL *seeds_bdd.sql* à la racine qui contient déjà des données lambda pour tester 
 
 ###Autres commandes
 
@@ -83,3 +85,5 @@ Créer un super user admin : `sf fos:user:create admin admin@admin.com admin --s
 
 
 Toutes les entities peuvent se gérer par les admins dans le back-office. Les fonctions de CRUD et pages liés qui avaient été générées à la base ont été commentées et sont normalement pas nécessaires puisqu'accessbiles dans le back-office.
+
+
