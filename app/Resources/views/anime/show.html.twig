@@ -1,76 +1,99 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Anime</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ anime.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ anime.name }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ typeName }}</td>
-            </tr>
-            <tr>
-                <th>Genre</th>
-                <td>{{ genreName }}</td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>{{ anime.picture }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ anime.status }}</td>
-            </tr>
-            <tr>
-                <th>Aired</th>
-                <td>{% if anime.aired %}{{ anime.aired|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Producers</th>
-                <td>{{ anime.producers }}</td>
-            </tr>
-            <tr>
-                <th>Licensors</th>
-                <td>{{ anime.licensors }}</td>
-            </tr>
-            <tr>
-                <th>Studios</th>
-                <td>{{ anime.studios }}</td>
-            </tr>
-            <tr>
-                <th>Source</th>
-                <td>{{ anime.source }}</td>
-            </tr>
-            <tr>
-                <th>Duration</th>
-                <td>{{ anime.duration }}</td>
-            </tr>
-            <tr>
-                <th>Synopsis</th>
-                <td>{{ anime.synopsis }}</td>
-            </tr>
-            <tr>
-                <th>Background</th>
-                <td>{{ anime.background }}</td>
-            </tr>
-            <tr>
-                <th>Rating</th>
-                <td>{{ anime.rating }}</td>
-            </tr>
-        </tbody>
-    </table>
+<ul>
+    <li>
+        <a href="{{ path('anime_index') }}">Back to the list</a>
+    </li>
+</ul>
 
-    <ul>
-        <li>
-            <a href="{{ path('anime_index') }}">Back to the list</a>
-        </li>
-    </ul>
+<div class="row">
+
+    <!-- Left content - Summury -->
+
+    <div class="col l4 m4 s12 info">
+        <div class="card">
+            <div class="test pushpin">
+                <div class="card-content">
+
+                    <h5>
+                        {{ anime.name }}
+                    </h5>
+
+                    <img src="{{ anime.picture }}" height="320px" title="{{anime.name}}"/>
+                </div>
+                <div class="card-action left-align">
+                    <p>
+                        <strong>Type</strong>
+                        :
+                        {{typeName}}
+                    </p>
+                    <p>
+                        <strong>Aired</strong>
+                        :
+                        {% if anime.aired %}{{ anime.aired|date('Y-m-d H:i:s') }}{% endif %}
+                    </p>
+                    <p>
+                        <strong>Studios</strong>
+                        :
+                        {{anime.studios}}
+                    </p>
+                    <p>
+                        <strong>Genres</strong>
+                        :
+                        {{genreName|slice(0, 3)|join(', ')}}
+                    </p>
+                    <p>
+                        <strong>Duration</strong>
+                        :
+                        {{anime.duration}}
+                        minutes
+                    </p>
+                    <p>
+                        <strong>Rating</strong>
+                        :
+                        {{anime.rating}}/10
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Right content - Informations -->
+
+    <div class="col l8 m8 s12 left-align">
+
+        <!-- Synopsis -->
+        <div class="section section-1">
+            <h5>Synopsis</h5>
+            {{anime.synopsis}}
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Background -->
+        <div class="section section-1">
+            <h5>background</h5>
+            {{anime.background}}
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Reviews -->
+        <div class="section section-4">
+            <h5>Reviews</h5>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Write Review -->
+        <div class="section section-5">
+            <h5>Write a review</h5>
+        </div>
+
+    </div>
+
+</div>
 {% endblock %}

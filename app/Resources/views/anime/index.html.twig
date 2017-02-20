@@ -1,59 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Animes list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Genre</th>
-                <th>Picture</th>
-                <th>Status</th>
-                <th>Aired</th>
-                <th>Producers</th>
-                <th>Licensors</th>
-                <th>Studios</th>
-                <th>Source</th>
-                <th>Duration</th>
-                <th>Synopsis</th>
-                <th>Background</th>
-                <th>Rating</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for anime in animes %}
-            <tr>
-                <td><a href="{{ path('anime_show', { 'id': anime.id }) }}">{{ anime.id }}</a></td>
-                <td>{{ anime.name }}</td>
-                <td>{{ typeName[anime.id] }}</td>
-                <td>{{ genreName[anime.id] }}</td>
-                <td>{{ anime.picture }}</td>
-                <td>{{ anime.status }}</td>
-                <td>{% if anime.aired %}{{ anime.aired|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ anime.producers }}</td>
-                <td>{{ anime.licensors }}</td>
-                <td>{{ anime.studios }}</td>
-                <td>{{ anime.source }}</td>
-                <td>{{ anime.duration }}</td>
-                <td>{{ anime.synopsis }}</td>
-                <td>{{ anime.background }}</td>
-                <td>{{ anime.rating }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('anime_show', { 'id': anime.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-    </ul>
+<h1>Anime list</h1>
+<div class="row">
+    {% for anime in animes %}
+        <div class="col s12 m6 l4">
+            <div class="card">
+                <div class="card-content">
+                    <a href="{{ path('anime_show', { 'id': anime.id }) }}">
+                       <img src="{{anime.picture}}" height="320px" title="{{anime.name}}"/>
+                    </a>
+                    <p>{{anime.name}}</p>
+                </div>
+                <div class="card-action link">
+                    <a href="{{ path('anime_show', { 'id': anime.id }) }}"><button type="button" class="btn btn-lg btn-primary">See details</button></a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
