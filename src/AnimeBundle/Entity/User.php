@@ -25,11 +25,4 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="picture", type="string", length=255)
-     */
-    private $picture;
 }
