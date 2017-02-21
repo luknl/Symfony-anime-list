@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 21 Février 2017 à 19:48
+-- Généré le :  Mar 21 Février 2017 à 20:00
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -42,7 +42,7 @@ CREATE TABLE `anime` (
   `synopsis` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `background` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `rating` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `anime`
@@ -53,7 +53,8 @@ INSERT INTO `anime` (`id`, `type_id`, `genre_id`, `name`, `picture`, `status`, `
 (2, 2, 3, 'Kimi no Na wa.', 'https://myanimelist.cdn-dena.com/images/anime/7/79999.jpg', 'Finished Airing', '2016-08-28 04:00:00', 'Kadokawa Shoten', 'Funimation', 'CoMix', 'Original', 106, 'Mitsuha Miyamizu, a high school girl, yearns to live the life of a boy in the bustling city of Tokyo—a dream that stands in stark contrast to her present life in the countryside. Meanwhile in the city, Taki Tachibana lives a busy life as a high school stu', 'No background information has been added to this title', '9.34'),
 (3, 1, 1, 'Code Geass: Hangyaku no Lelouch', 'https://myanimelist.cdn-dena.com/images/anime/5/50331.jpg', 'Finished Airing', '2012-10-06 19:03:00', 'Bandai', 'Funimation', 'Sunrise', 'Original', 24, 'In the year 2010, the Holy Empire of Britannia is establishing itself as a dominant military nation, starting with the conquest of Japan. Renamed to Area 11 after its swift defeat, Japan has seen significant resistance against these tyrants in an attempt ', 'Code Geass: Hangyaku no Lelouch is an original anime series by Sunrise animation studio with original character designs by the all-female Japanese manga artist group Clamp. Manga and light novels based off the show have been published by Kadokawa Shoten.', '8.82'),
 (4, 1, 4, 'Elfen Lied', 'https://myanimelist.cdn-dena.com/images/anime/10/6883.jpg', 'Finished Airing', '2012-07-04 00:00:00', 'VAP', 'ADV FIlms', 'Arms', 'Manga', 24, 'Lucy is a special breed of human referred to as "Diclonius," born with a short pair of horns and invisible telekinetic hands that lands her as a victim of inhumane scientific experimentation by the government. However, once circumstances present her an op', 'Elfen Lied is based on Lynn Okamoto''s seinen manga series of the same name and premiered while the manga was still in publication. The anime follows the source material through the first 7 volumes, with several alterations to the story, and concludes with', '7.84'),
-(5, 1, 3, 'Kuzu no Honkai', 'https://myanimelist.cdn-dena.com/images/anime/5/83937.jpg', 'Currently Airing', '2013-01-13 00:00:00', NULL, NULL, NULL, NULL, 22, 'To the outside world, Hanabi Yasuraoka and Mugi Awaya are the perfect couple. But in reality, they just share the same secret pain: they are both in love with other people they cannot be with. \r\n\r\nHanabi has loved her childhood friend and neighbor Narumi ', NULL, NULL);
+(5, 1, 3, 'Kuzu no Honkai', 'https://myanimelist.cdn-dena.com/images/anime/5/83937.jpg', 'Currently Airing', '2013-01-13 00:00:00', NULL, NULL, NULL, NULL, 22, 'To the outside world, Hanabi Yasuraoka and Mugi Awaya are the perfect couple. But in reality, they just share the same secret pain: they are both in love with other people they cannot be with. \r\n\r\nHanabi has loved her childhood friend and neighbor Narumi ', NULL, NULL),
+(6, 1, 5, 'Youjo Senki', 'https://myanimelist.cdn-dena.com/images/anime/5/82890.jpg', 'Currently Airing', '2017-01-06 00:00:00', NULL, NULL, NULL, NULL, 66, 'On the front lines of the war, there is a little girl. Blond hair, blue eyes, and porcelain white skin, she commands her squad with a lisping voice. Her name is Tanya Degurechaff. While in reality, she is one of Japan''s most elite salary-men, reborn as a ', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -81,7 +82,6 @@ INSERT INTO `anime_genre` (`id`, `name`) VALUES
 (8, 'Sports'),
 (9, 'Mystery'),
 (10, 'Sci-Fi'),
-(11, 'Sci-Fi'),
 (12, 'Shounen'),
 (13, 'Hentai');
 
@@ -344,7 +344,7 @@ ALTER TABLE `user_has_episodes`
 -- AUTO_INCREMENT pour la table `anime`
 --
 ALTER TABLE `anime`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `anime_genre`
 --
