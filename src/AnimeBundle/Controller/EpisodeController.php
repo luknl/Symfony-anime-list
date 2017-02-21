@@ -20,7 +20,7 @@ class EpisodeController extends Controller
      * @Route("/", name="episode_index")
      * @Method("GET")
      */
-    public function indexAction()
+    /*public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -35,7 +35,7 @@ class EpisodeController extends Controller
             'episodes' => $episodes,
             'animeName' => $animeName,
         ));
-    }
+    }*/
 
     /**
      * Creates a new episode entity.
