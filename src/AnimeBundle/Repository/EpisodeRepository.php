@@ -12,7 +12,7 @@ class EpisodeRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findAllById($id)  {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM AnimeBundle:Episode p WHERE p.anime = :id ORDER BY p.name ASC'  )
+            ->createQuery('SELECT p FROM AnimeBundle:Episode p WHERE p.anime = :id ORDER BY p.aired ASC'  )
             ->setParameter('id', $id)
             ->getResult();
     }
