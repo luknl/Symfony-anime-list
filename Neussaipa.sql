@@ -1,17 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.4.10
+-- http://www.phpmyadmin.net
 --
--- Client :  localhost:8889
--- Généré le :  Mar 21 Février 2017 à 18:02
--- Version du serveur :  5.6.35
--- Version de PHP :  7.1.1
+-- Client :  localhost:3306
+-- Généré le :  Mar 21 Février 2017 à 19:48
+-- Version du serveur :  5.5.42
+-- Version de PHP :  7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
--- Base de données :  `neussaipa`
+-- Base de données :  `Neussaipa`
 --
 
 -- --------------------------------------------------------
@@ -36,17 +42,18 @@ CREATE TABLE `anime` (
   `synopsis` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `background` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `rating` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `anime`
 --
 
 INSERT INTO `anime` (`id`, `type_id`, `genre_id`, `name`, `picture`, `status`, `aired`, `producers`, `licensors`, `studios`, `source`, `duration`, `synopsis`, `background`, `rating`) VALUES
-(1, 1, 2, 'Fullmetal Alchemist: Brotherhood', 'https://myanimelist.cdn-dena.com/images/anime/5/47421.jpg', 'Airing', '2012-04-05 00:00:00', 'Aniplex, Square Enix', 'FUNimation', 'Bones', 'Manga', 24, 'Alchemy is bound by this Law of Equivalent Exchange—something the young brothers Edward and Alphonse Elric only realize after attempting human transmutation: the one forbidden act of alchemy. They pay a terrible price for their transgression—Edward loses', 'Fullmetal Alchemist: Brotherhood is an alternate retelling of Hiromu Arakawa\'s Fullmetal Alchemist manga that is closer to the source material than the previous 2003 adaptation, this time covering the entire story.', '9.26'),
+(1, 1, 2, 'Fullmetal Alchemist: Brotherhood', 'https://myanimelist.cdn-dena.com/images/anime/5/47421.jpg', 'Airing', '2012-04-05 00:00:00', 'Aniplex, Square Enix', 'FUNimation', 'Bones', 'Manga', 24, 'Alchemy is bound by this Law of Equivalent Exchange—something the young brothers Edward and Alphonse Elric only realize after attempting human transmutation: the one forbidden act of alchemy. They pay a terrible price for their transgression—Edward loses', 'Fullmetal Alchemist: Brotherhood is an alternate retelling of Hiromu Arakawa''s Fullmetal Alchemist manga that is closer to the source material than the previous 2003 adaptation, this time covering the entire story.', '9.26'),
 (2, 2, 3, 'Kimi no Na wa.', 'https://myanimelist.cdn-dena.com/images/anime/7/79999.jpg', 'Finished Airing', '2016-08-28 04:00:00', 'Kadokawa Shoten', 'Funimation', 'CoMix', 'Original', 106, 'Mitsuha Miyamizu, a high school girl, yearns to live the life of a boy in the bustling city of Tokyo—a dream that stands in stark contrast to her present life in the countryside. Meanwhile in the city, Taki Tachibana lives a busy life as a high school stu', 'No background information has been added to this title', '9.34'),
 (3, 1, 1, 'Code Geass: Hangyaku no Lelouch', 'https://myanimelist.cdn-dena.com/images/anime/5/50331.jpg', 'Finished Airing', '2012-10-06 19:03:00', 'Bandai', 'Funimation', 'Sunrise', 'Original', 24, 'In the year 2010, the Holy Empire of Britannia is establishing itself as a dominant military nation, starting with the conquest of Japan. Renamed to Area 11 after its swift defeat, Japan has seen significant resistance against these tyrants in an attempt ', 'Code Geass: Hangyaku no Lelouch is an original anime series by Sunrise animation studio with original character designs by the all-female Japanese manga artist group Clamp. Manga and light novels based off the show have been published by Kadokawa Shoten.', '8.82'),
-(4, 1, 4, 'Elfen Lied', 'https://myanimelist.cdn-dena.com/images/anime/10/6883.jpg', 'Finished Airing', '2012-07-04 00:00:00', 'VAP', 'ADV FIlms', 'Arms', 'Manga', 24, 'Lucy is a special breed of human referred to as \"Diclonius,\" born with a short pair of horns and invisible telekinetic hands that lands her as a victim of inhumane scientific experimentation by the government. However, once circumstances present her an op', 'Elfen Lied is based on Lynn Okamoto\'s seinen manga series of the same name and premiered while the manga was still in publication. The anime follows the source material through the first 7 volumes, with several alterations to the story, and concludes with', '7.84');
+(4, 1, 4, 'Elfen Lied', 'https://myanimelist.cdn-dena.com/images/anime/10/6883.jpg', 'Finished Airing', '2012-07-04 00:00:00', 'VAP', 'ADV FIlms', 'Arms', 'Manga', 24, 'Lucy is a special breed of human referred to as "Diclonius," born with a short pair of horns and invisible telekinetic hands that lands her as a victim of inhumane scientific experimentation by the government. However, once circumstances present her an op', 'Elfen Lied is based on Lynn Okamoto''s seinen manga series of the same name and premiered while the manga was still in publication. The anime follows the source material through the first 7 volumes, with several alterations to the story, and concludes with', '7.84'),
+(5, 1, 3, 'Kuzu no Honkai', 'https://myanimelist.cdn-dena.com/images/anime/5/83937.jpg', 'Currently Airing', '2013-01-13 00:00:00', NULL, NULL, NULL, NULL, 22, 'To the outside world, Hanabi Yasuraoka and Mugi Awaya are the perfect couple. But in reality, they just share the same secret pain: they are both in love with other people they cannot be with. \r\n\r\nHanabi has loved her childhood friend and neighbor Narumi ', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -57,7 +64,7 @@ INSERT INTO `anime` (`id`, `type_id`, `genre_id`, `name`, `picture`, `status`, `
 CREATE TABLE `anime_genre` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `anime_genre`
@@ -67,7 +74,16 @@ INSERT INTO `anime_genre` (`id`, `name`) VALUES
 (1, 'Action'),
 (2, 'Adventure'),
 (3, 'Romance'),
-(4, 'Horror');
+(4, 'Horror'),
+(5, 'Military'),
+(6, 'Supernatural'),
+(7, 'Historical'),
+(8, 'Sports'),
+(9, 'Mystery'),
+(10, 'Sci-Fi'),
+(11, 'Sci-Fi'),
+(12, 'Shounen'),
+(13, 'Hentai');
 
 -- --------------------------------------------------------
 
@@ -81,7 +97,7 @@ CREATE TABLE `anime_review` (
   `anime_id` int(11) NOT NULL,
   `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `anime_review`
@@ -114,7 +130,7 @@ CREATE TABLE `anime_score` (
 CREATE TABLE `anime_type` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `anime_type`
@@ -122,7 +138,10 @@ CREATE TABLE `anime_type` (
 
 INSERT INTO `anime_type` (`id`, `name`) VALUES
 (1, 'TV'),
-(2, 'Movie');
+(2, 'Movie'),
+(3, 'ONA'),
+(4, 'OVA'),
+(5, 'Special');
 
 -- --------------------------------------------------------
 
@@ -137,15 +156,15 @@ CREATE TABLE `episode` (
   `duration` int(11) DEFAULT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `aired` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `episode`
 --
 
 INSERT INTO `episode` (`id`, `anime_id`, `name`, `duration`, `description`, `aired`) VALUES
-(1, 1, 'Fullmetal Alchemist', 25, 'The Elric brothers, Edward and Alphonse, who both have already made a strong reputation of themselves despite Edward\'s short military career, are called upon by Führer King Bradley and Colonel Roy Mustang to hunt down rogue state alchemist Isaac McDougal.', '2012-01-01 00:00:00'),
-(2, 1, 'The First Day', 25, 'As Edward and Alphonse depart for Liore by train, their childhood is shown in flashback. They had learned rudimentary alchemy from their father\'s books, and, upon their mother\'s death, had attempted to revive her by performing human transmutation, a pract', '2012-01-07 00:00:00');
+(1, 1, 'Fullmetal Alchemist', 25, 'The Elric brothers, Edward and Alphonse, who both have already made a strong reputation of themselves despite Edward''s short military career, are called upon by Führer King Bradley and Colonel Roy Mustang to hunt down rogue state alchemist Isaac McDougal.', '2012-01-01 00:00:00'),
+(2, 1, 'The First Day', 25, 'As Edward and Alphonse depart for Liore by train, their childhood is shown in flashback. They had learned rudimentary alchemy from their father''s books, and, upon their mother''s death, had attempted to revive her by performing human transmutation, a pract', '2012-01-07 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -193,14 +212,14 @@ CREATE TABLE `fos_user` (
   `confirmation_token` varchar(180) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password_requested_at` datetime DEFAULT NULL,
   `roles` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `fos_user`
 --
 
 INSERT INTO `fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com', 'admin@admin.com', 1, NULL, '$2y$13$3mSLVGR7wnli1mTg0AVfEe.TxopdS7eBzMiLsCKhuUWs1oFdK18Zm', '2017-02-20 22:18:35', NULL, NULL, 'a:1:{i:0;s:16:\"ROLE_SUPER_ADMIN\";}'),
+(1, 'admin', 'admin', 'admin@admin.com', 'admin@admin.com', 1, NULL, '$2y$13$3mSLVGR7wnli1mTg0AVfEe.TxopdS7eBzMiLsCKhuUWs1oFdK18Zm', '2017-02-20 22:18:35', NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}'),
 (2, 'lukio', 'lukio', 'haenell@yahoo.fr', 'haenell@yahoo.fr', 1, NULL, '$2y$13$uhZh0ixgKS.btQuxNFFg6ujRy9jTSmWBnDBiMbl0V1f1Ke1WjA.SS', '2017-02-20 22:18:08', NULL, NULL, 'a:0:{}');
 
 -- --------------------------------------------------------
@@ -325,17 +344,17 @@ ALTER TABLE `user_has_episodes`
 -- AUTO_INCREMENT pour la table `anime`
 --
 ALTER TABLE `anime`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `anime_genre`
 --
 ALTER TABLE `anime_genre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT pour la table `anime_review`
 --
 ALTER TABLE `anime_review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `anime_score`
 --
@@ -345,12 +364,12 @@ ALTER TABLE `anime_score`
 -- AUTO_INCREMENT pour la table `anime_type`
 --
 ALTER TABLE `anime_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `episode`
 --
 ALTER TABLE `episode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `episode_review`
 --
@@ -365,7 +384,7 @@ ALTER TABLE `episode_score`
 -- AUTO_INCREMENT pour la table `fos_user`
 --
 ALTER TABLE `fos_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `user_has_animes`
 --
@@ -434,3 +453,7 @@ ALTER TABLE `user_has_animes`
 ALTER TABLE `user_has_episodes`
   ADD CONSTRAINT `FK_EC7FD8EB362B62A0` FOREIGN KEY (`episode_id`) REFERENCES `episode` (`id`),
   ADD CONSTRAINT `FK_EC7FD8EBA76ED395` FOREIGN KEY (`user_id`) REFERENCES `fos_user` (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
