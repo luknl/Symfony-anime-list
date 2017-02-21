@@ -53,7 +53,23 @@
                     <p>
                         <strong>Rating</strong>
                         :
-                        {{anime.rating}}/10
+                        {{anime.rating}}
+                    </p>
+                    <p>
+                        <strong>Score (avg) :</strong>
+                         {% if notationAvg != 0 %}
+                            {{ notationAvg|round }}
+                         {% else %}
+                            Pas de notes
+                         {% endif %}
+                    </p>
+                    <p>
+                        <strong>Followers</strong>
+                        : SERVICE
+                    </p>
+                    <p>
+                        <strong>Favorites</strong>
+                        : SERVICE
                     </p>
                 </div>
             </div>
@@ -75,7 +91,7 @@
 
         <!-- Background -->
         <div class="section section-1">
-            <h5>background</h5>
+            <h5>Background</h5>
             {{anime.background}}
         </div>
 
