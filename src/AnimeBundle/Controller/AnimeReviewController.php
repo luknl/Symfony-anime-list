@@ -108,13 +108,18 @@ class AnimeReviewController extends Controller
     {
         if ( $animeReview->getUser() == $this->getUser() ) {
             $deleteForm = $this->createDeleteForm($animeReview);
-            $editForm = $this->createForm('AnimeBundle\Form\AnimeReviewType', $animeReview);
+
+            $animeid = $animeReview->getAnime()->getId();
+
+            $editForm = $this->createForm('AnimeBundle\Form\AnimeReviewType', $animeReview, array(
+                'anime' => $animeid
+            ));
             $editForm->handleRequest($request);
 
             if ($editForm->isSubmitted() && $editForm->isValid()) {
                 $this->getDoctrine()->getManager()->flush();
 
-                return $this->redirectToRoute('animereview_edit', array('id' => $animeReview->getId()));
+                return $this->redirectToRoute('anime_show', array('id' => $animeid));
             }
 
             return $this->render(
@@ -139,6 +144,8 @@ class AnimeReviewController extends Controller
      */
     public function deleteAction(Request $request, AnimeReview $animeReview)
     {
+        $animeid = $animeReview->getAnime()->getId();
+
         $form = $this->createDeleteForm($animeReview);
         $form->handleRequest($request);
 
@@ -148,7 +155,7 @@ class AnimeReviewController extends Controller
             $em->flush($animeReview);
         }
 
-        return $this->redirectToRoute('animereview_index');
+        return $this->redirectToRoute('anime_show', array( 'id' => $animeid ));
     }
 
     /**
