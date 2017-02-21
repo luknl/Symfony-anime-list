@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 21 Février 2017 à 20:00
+-- Généré le :  Mar 21 Février 2017 à 20:14
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -42,7 +42,7 @@ CREATE TABLE `anime` (
   `synopsis` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `background` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `rating` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `anime`
@@ -54,7 +54,10 @@ INSERT INTO `anime` (`id`, `type_id`, `genre_id`, `name`, `picture`, `status`, `
 (3, 1, 1, 'Code Geass: Hangyaku no Lelouch', 'https://myanimelist.cdn-dena.com/images/anime/5/50331.jpg', 'Finished Airing', '2012-10-06 19:03:00', 'Bandai', 'Funimation', 'Sunrise', 'Original', 24, 'In the year 2010, the Holy Empire of Britannia is establishing itself as a dominant military nation, starting with the conquest of Japan. Renamed to Area 11 after its swift defeat, Japan has seen significant resistance against these tyrants in an attempt ', 'Code Geass: Hangyaku no Lelouch is an original anime series by Sunrise animation studio with original character designs by the all-female Japanese manga artist group Clamp. Manga and light novels based off the show have been published by Kadokawa Shoten.', '8.82'),
 (4, 1, 4, 'Elfen Lied', 'https://myanimelist.cdn-dena.com/images/anime/10/6883.jpg', 'Finished Airing', '2012-07-04 00:00:00', 'VAP', 'ADV FIlms', 'Arms', 'Manga', 24, 'Lucy is a special breed of human referred to as "Diclonius," born with a short pair of horns and invisible telekinetic hands that lands her as a victim of inhumane scientific experimentation by the government. However, once circumstances present her an op', 'Elfen Lied is based on Lynn Okamoto''s seinen manga series of the same name and premiered while the manga was still in publication. The anime follows the source material through the first 7 volumes, with several alterations to the story, and concludes with', '7.84'),
 (5, 1, 3, 'Kuzu no Honkai', 'https://myanimelist.cdn-dena.com/images/anime/5/83937.jpg', 'Currently Airing', '2013-01-13 00:00:00', NULL, NULL, NULL, NULL, 22, 'To the outside world, Hanabi Yasuraoka and Mugi Awaya are the perfect couple. But in reality, they just share the same secret pain: they are both in love with other people they cannot be with. \r\n\r\nHanabi has loved her childhood friend and neighbor Narumi ', NULL, NULL),
-(6, 1, 5, 'Youjo Senki', 'https://myanimelist.cdn-dena.com/images/anime/5/82890.jpg', 'Currently Airing', '2017-01-06 00:00:00', NULL, NULL, NULL, NULL, 66, 'On the front lines of the war, there is a little girl. Blond hair, blue eyes, and porcelain white skin, she commands her squad with a lisping voice. Her name is Tanya Degurechaff. While in reality, she is one of Japan''s most elite salary-men, reborn as a ', NULL, NULL);
+(6, 1, 5, 'Youjo Senki', 'https://myanimelist.cdn-dena.com/images/anime/5/82890.jpg', 'Currently Airing', '2017-01-06 00:00:00', NULL, NULL, NULL, NULL, 66, 'On the front lines of the war, there is a little girl. Blond hair, blue eyes, and porcelain white skin, she commands her squad with a lisping voice. Her name is Tanya Degurechaff. While in reality, she is one of Japan''s most elite salary-men, reborn as a ', NULL, NULL),
+(7, 1, 1, 'Fuuka', 'https://myanimelist.cdn-dena.com/images/anime/8/83735.jpg', 'Currently Airing', '2017-01-06 00:00:00', NULL, NULL, NULL, NULL, 2, 'Yuu Haruna just moved into town and loves to use Twitter. Out on his way to buy dinner, he bumps into a mysterious girl, Fuuka Akitsuki, who breaks his phone thinking he was trying to take a picture of her panties. How will his new life change now?', NULL, NULL),
+(8, 1, 1, 'Hand Shakers', 'https://myanimelist.cdn-dena.com/images/anime/7/83395.jpg', 'Currently Airing', '2017-01-11 00:00:00', NULL, NULL, NULL, NULL, 8, 'The anime takes place in Osaka in "AD20XX," and revolves around the Hand Shakers—partners who can summon "Nimrodes," weapons born from their deep psyche by joining hands. In order to grant the pair''s wish, the Hand Shakers compete with and fight other Han', NULL, NULL),
+(9, 1, 10, 'One Room', 'https://myanimelist.cdn-dena.com/images/anime/9/83777.jpg', 'Currently Airing', '2017-01-11 00:00:00', NULL, NULL, NULL, NULL, 4, 'Series of shorts that will tell stories of "three sisters raised in your (one) room."', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -156,7 +159,7 @@ CREATE TABLE `episode` (
   `duration` int(11) DEFAULT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `aired` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `episode`
@@ -164,7 +167,14 @@ CREATE TABLE `episode` (
 
 INSERT INTO `episode` (`id`, `anime_id`, `name`, `duration`, `description`, `aired`) VALUES
 (1, 1, 'Fullmetal Alchemist', 25, 'The Elric brothers, Edward and Alphonse, who both have already made a strong reputation of themselves despite Edward''s short military career, are called upon by Führer King Bradley and Colonel Roy Mustang to hunt down rogue state alchemist Isaac McDougal.', '2012-01-01 00:00:00'),
-(2, 1, 'The First Day', 25, 'As Edward and Alphonse depart for Liore by train, their childhood is shown in flashback. They had learned rudimentary alchemy from their father''s books, and, upon their mother''s death, had attempted to revive her by performing human transmutation, a pract', '2012-01-07 00:00:00');
+(2, 1, 'The First Day', 25, 'As Edward and Alphonse depart for Liore by train, their childhood is shown in flashback. They had learned rudimentary alchemy from their father''s books, and, upon their mother''s death, had attempted to revive her by performing human transmutation, a pract', '2012-01-07 00:00:00'),
+(3, 3, 'The Day a New Demon was Born', 24, 'The story follows Lelouch vi Britannia, exiled prince of Britannia, who is living under the identity Lelouch Lamperouge. His former identity was declared dead seven years ago when Britannia conquered Japan, now renamed Area 11. In the present, Lelouch is', '2012-10-06 00:00:00'),
+(4, 3, 'The White Knight Awakens', 24, 'Lelouch is questioned by Villetta Nu about the dead soldiers. Using Geass, he orders her to give him her Knightmare Frame, a giant mechanical robot. Lelouch then leads the terrorist group to combat Viceroy Clovis la Britannia''s army forcing them to utiliz', '2012-01-01 00:00:00'),
+(5, 3, 'The False Classmate', 24, 'Having reason to suspect the death of Marianne vi Britannia, his mother, was planned by one of his relatives, Lelouch questions Clovis about her murder before killing him. He returns to Ashford Academy and realizes his classmate, Kallen Stadtfeld, is part', '2012-01-01 00:00:00'),
+(6, 3, 'His Name is Zero', 24, 'Jeremiah Gottwald and the purebloods within the Britannian Army wish to scapegoat Suzaku for Clovis'' death as an excuse to rid the army of Honorary Britannians, citizens who become Britannians after their country had been conquered. Lelouch dons the pseud', '2012-01-01 00:00:00'),
+(7, 3, 'The Princess and the Witch', 24, 'Lelouch is reunited with the green haired girl who introduces herself as C.C. and is now living in his residence. Meanwhile, since Zero revealed he was Clovis'' murderer, Suzaku has been acquitted of all charges and meets Princess Euphemia li Britannia. Eu', '2012-01-01 00:00:00'),
+(8, 3, 'The Stolen Mask', 24, 'Suzaku transfers into Lelouch''s class and faces the prejudice of the Britannian students. Arthur, a stray cat, enters Lelouch''s room and steals his Zero mask. Milly Ashford, believing Arthur has something that embarrasses Lelouch, has the whole school pur', '2012-01-01 00:00:00'),
+(9, 1, 'Attack Cornelia', 24, 'Lelouch reminisces about his last meeting with his father; shortly after his mother''s death, Lelouch questions Charles about it and is exiled to Japan along with his sister Nunnally vi Britannia. Cornelia issues a challenge to Zero at Saitama Ghetto. Lelo', '2012-01-01 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -344,7 +354,7 @@ ALTER TABLE `user_has_episodes`
 -- AUTO_INCREMENT pour la table `anime`
 --
 ALTER TABLE `anime`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pour la table `anime_genre`
 --
@@ -369,7 +379,7 @@ ALTER TABLE `anime_type`
 -- AUTO_INCREMENT pour la table `episode`
 --
 ALTER TABLE `episode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pour la table `episode_review`
 --
