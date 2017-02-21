@@ -12,6 +12,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AnimeBundle:Default:index.html.twig');
+        return $this->render('default/index.html.twig');
     }
 }

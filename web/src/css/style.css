@@ -5,8 +5,6 @@ body{
 header {
   background: white;
   display:flex;
-  height:251px;
-  padding-top:20px;
   margin:auto;
   text-align: center;
 }
@@ -35,7 +33,11 @@ header .menu__text {
 }
 
 header ul li{
-  margin-top:20px;
   display: inline-block;
   padding:0 5px;
+}
+
+
+header .user_infos {
+  float: right;
 }
