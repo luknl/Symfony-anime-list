@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 21 Février 2017 à 20:14
+-- Généré le :  Mar 21 Février 2017 à 20:35
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -159,7 +159,7 @@ CREATE TABLE `episode` (
   `duration` int(11) DEFAULT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `aired` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `episode`
@@ -174,7 +174,12 @@ INSERT INTO `episode` (`id`, `anime_id`, `name`, `duration`, `description`, `air
 (6, 3, 'His Name is Zero', 24, 'Jeremiah Gottwald and the purebloods within the Britannian Army wish to scapegoat Suzaku for Clovis'' death as an excuse to rid the army of Honorary Britannians, citizens who become Britannians after their country had been conquered. Lelouch dons the pseud', '2012-01-01 00:00:00'),
 (7, 3, 'The Princess and the Witch', 24, 'Lelouch is reunited with the green haired girl who introduces herself as C.C. and is now living in his residence. Meanwhile, since Zero revealed he was Clovis'' murderer, Suzaku has been acquitted of all charges and meets Princess Euphemia li Britannia. Eu', '2012-01-01 00:00:00'),
 (8, 3, 'The Stolen Mask', 24, 'Suzaku transfers into Lelouch''s class and faces the prejudice of the Britannian students. Arthur, a stray cat, enters Lelouch''s room and steals his Zero mask. Milly Ashford, believing Arthur has something that embarrasses Lelouch, has the whole school pur', '2012-01-01 00:00:00'),
-(9, 1, 'Attack Cornelia', 24, 'Lelouch reminisces about his last meeting with his father; shortly after his mother''s death, Lelouch questions Charles about it and is exiled to Japan along with his sister Nunnally vi Britannia. Cornelia issues a challenge to Zero at Saitama Ghetto. Lelo', '2012-01-01 00:00:00');
+(9, 1, 'Attack Cornelia', 24, 'Lelouch reminisces about his last meeting with his father; shortly after his mother''s death, Lelouch questions Charles about it and is exiled to Japan along with his sister Nunnally vi Britannia. Cornelia issues a challenge to Zero at Saitama Ghetto. Lelo', '2012-01-01 00:00:00'),
+(10, 7, 'Fuuka!', 24, 'No synopsis available.', '2017-01-06 00:00:00'),
+(11, 7, 'Episode 2', 7, 'No synopsis available.', '2017-01-06 00:00:00'),
+(12, 1, 'Triangle!', -8, 'No synopsis available.', '2017-01-13 00:00:00'),
+(13, 4, 'A Chance Encounter: Begegnung', 25, 'After killing many facility employees, Lucy escapes from the facility where she has been contained. However, a sniper shoots her in the head as she is escaping and she falls into the water. When she reaches the shore, she doesn''t remember her past and can', '2012-04-05 00:00:00'),
+(14, 4, 'Annihilation: Vernichtung', 25, 'Police are combing the city trying to find Lucy. Kohta finds Nyu at the beach where Bandoh, a member of SAT, and his partner are looking for Lucy. When they find Nyu, they beat Kohta up and take her. Bandoh tries to provoke her because he wants to fight o', '2012-04-30 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -222,15 +227,16 @@ CREATE TABLE `fos_user` (
   `confirmation_token` varchar(180) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password_requested_at` datetime DEFAULT NULL,
   `roles` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Contenu de la table `fos_user`
 --
 
 INSERT INTO `fos_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `confirmation_token`, `password_requested_at`, `roles`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com', 'admin@admin.com', 1, NULL, '$2y$13$3mSLVGR7wnli1mTg0AVfEe.TxopdS7eBzMiLsCKhuUWs1oFdK18Zm', '2017-02-20 22:18:35', NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}'),
-(2, 'lukio', 'lukio', 'haenell@yahoo.fr', 'haenell@yahoo.fr', 1, NULL, '$2y$13$uhZh0ixgKS.btQuxNFFg6ujRy9jTSmWBnDBiMbl0V1f1Ke1WjA.SS', '2017-02-20 22:18:08', NULL, NULL, 'a:0:{}');
+(1, 'admin', 'admin', 'admin@admin.com', 'admin@admin.com', 1, NULL, '$2y$13$3mSLVGR7wnli1mTg0AVfEe.TxopdS7eBzMiLsCKhuUWs1oFdK18Zm', '2017-02-21 20:34:01', NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}'),
+(2, 'lukio', 'lukio', 'haenell@yahoo.fr', 'haenell@yahoo.fr', 1, NULL, '$2y$13$uhZh0ixgKS.btQuxNFFg6ujRy9jTSmWBnDBiMbl0V1f1Ke1WjA.SS', '2017-02-20 22:18:08', NULL, NULL, 'a:0:{}'),
+(3, 'van_i', 'van_i', 'van@busin.es', 'van@busin.es', 1, NULL, '$2y$13$qCEo4j/Mh2MUH/H.phgAdO0xsCcP47UDOlVM5e7pBmO44.xMEM5mu', '2017-02-21 20:33:23', NULL, NULL, 'a:0:{}');
 
 -- --------------------------------------------------------
 
@@ -379,7 +385,7 @@ ALTER TABLE `anime_type`
 -- AUTO_INCREMENT pour la table `episode`
 --
 ALTER TABLE `episode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT pour la table `episode_review`
 --
@@ -394,7 +400,7 @@ ALTER TABLE `episode_score`
 -- AUTO_INCREMENT pour la table `fos_user`
 --
 ALTER TABLE `fos_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `user_has_animes`
 --
