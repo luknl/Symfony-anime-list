@@ -16,6 +16,26 @@
                     <li>
                         <a href="{{ path('anime_index') }}">Animes</a>
                     </li>
+                    <li>
+                        <a href="{{ path('animegenre_index') }}">Genres</a>
+                    </li>
+                </ul>
+                <ul class="user_infos">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li>
+                            <a href="{{ path('fos_user_profile_show') }}">Profil {{ app.user.username }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path('fos_user_security_login') }}">Login</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_registration_register') }}">Register</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </nav>
         </header>
