@@ -95,6 +95,21 @@
             <a href="{{ path('animereview_new', {'id': anime.id}) }}">Write your review</a>
         </div>
 
+        <div class="divider"></div>
+
+        <!-- Write Review -->
+        <div class="section section-5">
+            {% for episode in episodes %}
+                <div class="col s12 m6 l4">
+                    <div class="card">
+                        <div class="card-content">
+                            <p>{{episode.name}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
 
 </div>
