@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Symfony List{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('src/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('src/css/anime.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    <div>
+      <header>
+        <img src="{{ asset('src/imgs/logo.png') }}" class="logo" width="150px" alt="">
+        <img src="{{ asset('src/imgs/img1.png') }}" width="600px" alt="">
+        <ul>
+
+          <a href="{{ path('anime_index') }}">
+            <li>
+              <div class="menu">
+                <p class="menu__text">. Animes .</p>
+              </div>
+            </li>
+          </a>
+
+          <a href="{{ path('userhasanimes_index') }}">
+            <li>
+              <div class="menu">
+                <p class="menu__text"> Planning *</p>
+              </div>
+            </li>
+          </a>
+
+          <a href="{{ path('anime_index') }}">
+            <li>
+              <div class="menu">
+                <p class="menu__text"> ~ Genres ~ </p>
+              </div>
+            </li>
+          </a>
+
+          <a href="{{ path('anime_index') }}">
+            <li>
+              <div class="menu">
+                <p class="menu__text"> ~ Profil ~ </p>
+              </div>
+            </li>
+          </a>
+
+      </ul>
+      </header>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    </body>
+</html>

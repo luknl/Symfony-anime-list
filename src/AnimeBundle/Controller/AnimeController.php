@@ -85,6 +85,8 @@ class AnimeController extends Controller
         $episodes = $em->getRepository('AnimeBundle:Episode')->findAllById( $anime->getId() );
         $reviews = $em->getRepository('AnimeBundle:AnimeReview')->findAllById( $anime->getId() );
 
+        $notationAvg = $em->getRepository('AnimeBundle:AnimeScore')->getAverageById( $anime->getId() );
+
         return $this->render('anime/show.html.twig', array(
             'anime' => $anime,
             'typeName' => $typeName,
@@ -92,6 +94,7 @@ class AnimeController extends Controller
             'episodes' => $episodes,
             'reviews' => $reviews,
             'user' => $user,
+            'notationAvg' => $notationAvg,
             #'delete_form' => $deleteForm->createView(),
         ));
     }
