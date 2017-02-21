@@ -84,13 +84,15 @@
         <!-- Reviews -->
         <div class="section section-4">
             <h5>Reviews</h5>
+            {{ path('animereview_show', { 'id': anime.id }) }}
+            <a href="{{ path('animereview_show', { 'id': anime.id }) }}">Voir</a>
         </div>
 
         <div class="divider"></div>
 
         <!-- Write Review -->
         <div class="section section-5">
-            <h5>Write a review</h5>
+            <a href="{{ path('animereview_new', {'id': anime.id}) }}">Write your review</a>
         </div>
 
     </div>

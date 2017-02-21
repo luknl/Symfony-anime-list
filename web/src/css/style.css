@@ -1,3 +1,41 @@
 body{
+  background-color: #E8E8E8;
+}
+
+header {
   background: white;
+  display:flex;
+  height:251px;
+  padding-top:20px;
+  margin:auto;
+  text-align: center;
+}
+
+header .logo {
+  margin-right: 20px;
+}
+
+header .menu {
+  box-sizing: border-box;
+  width: 218px;
+  height: 70.18px;
+  background: radial-gradient(circle, #F8FEFF 0%, #C8F7FC 0.12%, #87ECFF 21.26%, #008DFF 100%);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.17);
+  border: 1px solid rgba(0,141,255,0.41);
+  border-radius: 5px;
+}
+
+header .menu__text {
+  text-align: center;
+  height: 48px;
+  font-family: "Gochi Hand";
+  font-size: 40px;
+  line-height: 0px;
+  color: #FFFFFF;
+}
+
+header ul li{
+  margin-top:20px;
+  display: inline-block;
+  padding:0 5px;
 }
