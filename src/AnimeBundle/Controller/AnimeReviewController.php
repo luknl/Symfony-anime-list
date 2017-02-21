@@ -20,7 +20,7 @@ class AnimeReviewController extends Controller
      * @Route("/", name="animereview_index")
      * @Method("GET")
      */
-    public function indexAction()
+    /*public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -35,7 +35,7 @@ class AnimeReviewController extends Controller
             'animeReviews' => $animeReviews,
             'animeName' => $animeName,
         ));
-    }
+    }*/
 
     /**
      * Creates a new animeReview entity.
@@ -45,23 +45,38 @@ class AnimeReviewController extends Controller
      */
     public function newAction(Request $request)
     {
-        $animeReview = new Animereview();
-        $form = $this->createForm('AnimeBundle\Form\AnimeReviewType', $animeReview);
-        $form->handleRequest($request);
-        #$animeReview->setCreated( new \DateTime('now') );
+        if ( $this->getUser() ){
+            $animeReview = new Animereview();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($animeReview);
-            $em->flush($animeReview);
+            $animeid = $request->query->get('anime');
+            $animeReview->setUser($this->getUser());
 
-            return $this->redirectToRoute('animereview_show', array('id' => $animeReview->getId()));
+            $form = $this->createForm('AnimeBundle\Form\AnimeReviewType', $animeReview, array(
+                'anime' => $animeid
+            ));
+            $form->handleRequest($request);
+
+
+
+            #$animeReview->setCreated( new \DateTime('now') );
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($animeReview);
+                $em->flush($animeReview);
+
+                return $this->redirectToRoute('anime_show', array( 'id' => $animeReview->getAnime()->getId() ));
+            }
+
+            return $this->render('animereview/new.html.twig', array(
+                'animeReview' => $animeReview,
+                'form' => $form->createView(),
+            ));
+        }
+        else {
+            return $this->redirectToRoute('fos_user_security_login');
         }
 
-        return $this->render('animereview/new.html.twig', array(
-            'animeReview' => $animeReview,
-            'form' => $form->createView(),
-        ));
     }
 
     /**
@@ -70,7 +85,7 @@ class AnimeReviewController extends Controller
      * @Route("/{id}", name="animereview_show")
      * @Method("GET")
      */
-    public function showAction(AnimeReview $animeReview)
+    /*public function showAction(AnimeReview $animeReview)
     {
         #$deleteForm = $this->createDeleteForm($animeReview);
 
@@ -81,7 +96,7 @@ class AnimeReviewController extends Controller
             'animeName' => $animeName,
             #'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Displays a form to edit an existing animeReview entity.

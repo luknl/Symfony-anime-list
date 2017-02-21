@@ -84,15 +84,24 @@
         <!-- Reviews -->
         <div class="section section-4">
             <h5>Reviews</h5>
-            {{ path('animereview_show', { 'id': anime.id }) }}
-            <a href="{{ path('animereview_show', { 'id': anime.id }) }}">Voir</a>
+            {% for review in reviews %}
+                <div class="col s12 m12 l12">
+                    <div class="card">
+                        <div class="card-content">
+                            <p>By {{review.user}}</p>
+                            <span>{{review.value}}</span>
+                            <span style="float: right">{% if review.created %}{{ review.created|date('Y-m-d') }}{% endif %}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
 
         <div class="divider"></div>
 
         <!-- Write Review -->
         <div class="section section-5">
-            <a href="{{ path('animereview_new', {'id': anime.id}) }}">Write your review</a>
+            <a href="{{ path('animereview_new', {'anime': anime.id}) }}">Write your review</a>
         </div>
 
         <div class="divider"></div>

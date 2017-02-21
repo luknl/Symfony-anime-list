@@ -82,12 +82,14 @@ class AnimeController extends Controller
         $genreName = $anime->getGenre()->getName();
 
         $episodes = $em->getRepository('AnimeBundle:Episode')->findAllById( $anime->getId() );
+        $reviews = $em->getRepository('AnimeBundle:AnimeReview')->findAllById( $anime->getId() );
 
         return $this->render('anime/show.html.twig', array(
             'anime' => $anime,
             'typeName' => $typeName,
             'genreName' => $genreName,
             'episodes' => $episodes,
+            'reviews' => $reviews,
             #'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -10,4 +10,10 @@ namespace AnimeBundle\Repository;
  */
 class AnimeReviewRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllById($id)  {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM AnimeBundle:AnimeReview p WHERE p.anime = :id ORDER BY p.created ASC'  )
+            ->setParameter('id', $id)
+            ->getResult();
+    }
 }
