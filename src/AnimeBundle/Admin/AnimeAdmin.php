@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class AnimeAdmin extends AbstractAdmin
 {
@@ -28,7 +29,9 @@ class AnimeAdmin extends AbstractAdmin
             ->end()
             ->with('Additional Infos', array('class' => 'col-md-6'))
                 ->add('status')
-                ->add('aired')
+                ->add('aired', DateTimeType::class, array(
+                    'years' => range(1920,2050),
+                ))
                 ->add('producers')
                 ->add('licensors')
                 ->add('studios')

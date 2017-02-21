@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class EpisodeType extends AbstractType
 {
@@ -18,7 +19,10 @@ class EpisodeType extends AbstractType
             ->add('name')
             ->add('duration')
             ->add('description')
-            ->add('aired')
+            ->add('aired', DateTimeType::class, array(
+                'widget' => 'single_text',
+                'years' => range(1920,2050),
+            ))
             ->add('anime', EntityType::class, array(
                 // query choices from this entity
                 'class' => 'AnimeBundle:Anime',

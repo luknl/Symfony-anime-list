@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class AnimeType extends AbstractType
 {
@@ -34,7 +35,10 @@ class AnimeType extends AbstractType
             ))
             ->add('picture')
             ->add('status')
-            ->add('aired')
+            ->add('aired', DateTimeType::class, array(
+                'widget' => 'single_text',
+                'years' => range(1920,2050),
+            ))
             ->add('producers')
             ->add('licensors')
             ->add('studios')
