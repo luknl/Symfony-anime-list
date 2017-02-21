@@ -81,6 +81,7 @@ class AnimeController extends Controller
         $typeName = $anime->getType()->getName();
         $genreName = $anime->getGenre()->getName();
 
+        $user = $this->getUser();
         $episodes = $em->getRepository('AnimeBundle:Episode')->findAllById( $anime->getId() );
         $reviews = $em->getRepository('AnimeBundle:AnimeReview')->findAllById( $anime->getId() );
 
@@ -90,6 +91,7 @@ class AnimeController extends Controller
             'genreName' => $genreName,
             'episodes' => $episodes,
             'reviews' => $reviews,
+            'user' => $user,
             #'delete_form' => $deleteForm->createView(),
         ));
     }

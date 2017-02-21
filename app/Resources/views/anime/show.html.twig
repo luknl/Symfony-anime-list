@@ -88,7 +88,10 @@
                 <div class="col s12 m12 l12">
                     <div class="card">
                         <div class="card-content">
-                            <p>By {{review.user}}</p>
+                            <p>
+                                <span>By {{review.user}}</span>
+                                <span style="margin-left: 30px; color: grey;">{% if review.user == user %}<a href="{{ path('animereview_edit', {'id': review.id}) }}">Edit</a>{% endif %}</span>
+                            </p>
                             <span>{{review.value}}</span>
                             <span style="float: right">{% if review.created %}{{ review.created|date('Y-m-d') }}{% endif %}</span>
                         </div>
