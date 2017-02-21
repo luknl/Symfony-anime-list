@@ -1,77 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Symfony anime{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="stylesheet" href="{{ asset('src/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('src/css/anime.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Symfony anime{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('src/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('src/css/anime.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  </head>
+  <body>
+    <header>
+      <a href="{{ path('homepage') }}"><img src="{{ asset('src/imgs/logo.png') }}" class="logo" width="150px" alt=""></a>
+      <img src="{{ asset('src/imgs/img1.png') }}" width="600px" alt="">
+      <ul>
 
+        <a href="{{ path('anime_index') }}">
+          <li>
+            <div class="menu">
+              <p class="menu__text">. Animes .</p>
+            </div>
+          </li>
+        </a>
 
-      <header>
-        <img src="{{ asset('src/imgs/logo.png') }}" class="logo" width="150px" alt="">
-        <img src="{{ asset('src/imgs/img1.png') }}" width="600px" alt="">
-        <ul>
+        <a href="{{ path('userhasanimes_index') }}">
+          <li>
+            <div class="menu">
+              <p class="menu__text"> Planning *</p>
+            </div>
+          </li>
+        </a>
 
-          <a href="{{ path('anime_index') }}">
-            <li>
+        <a href="{{ path('animegenre_index') }}">
+          <li>
+            <div class="menu">
+              <p class="menu__text"> ~ Genres ~ </p>
+            </div>
+          </li>
+        </a>
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          <li>
+            <a href="{{ path('fos_user_profile_show') }}">
               <div class="menu">
-                <p class="menu__text">. Animes .</p>
+                <p class="menu__text"> ~ Mon Profil ~ </p>
               </div>
-            </li>
-          </a>
+            </a>
+          </li>
+          <li>
+              <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+          </li>
+        {% else %}
+          <li>
+              <a href="{{ path('fos_user_security_login') }}">Login</a>
+          </li>
+          <li>
+              <a href="{{ path('fos_user_registration_register') }}">Register</a>
+          </li>
+        {% endif %}
 
-          <a href="{{ path('userhasanimes_index') }}">
-            <li>
-              <div class="menu">
-                <p class="menu__text"> Planning *</p>
-              </div>
-            </li>
-          </a>
-
-          <a href="{{ path('animegenre_index') }}">
-            <li>
-              <div class="menu">
-                <p class="menu__text"> ~ Genres ~ </p>
-              </div>
-            </li>
-          </a>
-
-          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-              <li>
-                <a href="{{ path('fos_user_profile_show') }}">
-                  <div class="menu">
-                    <p class="menu__text"> ~ Mon Profil ~ </p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                  <a href="{{ path('fos_user_security_logout') }}">Logout</a>
-              </li>
-          {% else %}
-              <li>
-                  <a href="{{ path('fos_user_security_login') }}">Login</a>
-              </li>
-              <li>
-                  <a href="{{ path('fos_user_registration_register') }}">Register</a>
-              </li>
-          {% endif %}
-
-      </ul>
-      </header>
-
-
+    </ul>
+    </header>
 
     <div class="container center-align">
         {% block body %}{% endblock %}
     </div>
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
     {% block javascripts %}{% endblock %}
-    </body>
+  </body>
 </html>

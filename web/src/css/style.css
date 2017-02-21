@@ -1,11 +1,12 @@
 body{
   background-color: #E8E8E8;
+  font-family: times;
 }
 
 header {
   background: white;
   display:flex;
-  margin:auto;
+  padding:20px 0;
   text-align: center;
 }
 
@@ -40,4 +41,26 @@ header ul li{
 
 header .user_infos {
   float: right;
+}
+
+
+
+/* Content */
+
+.container {
+  padding-top:20px;
+}
+
+.date {
+  width: auto;
+  height: 392px;
+  background-color: #FFFFFF;
+  border: 2px solid #1700F3;
+  border-radius: 30px;
+  font-family: "Gochi Hand";
+  margin-bottom: 10px;
+}
+
+.date p {
+  font-size:50px;
 }
