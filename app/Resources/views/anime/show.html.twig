@@ -18,6 +18,18 @@
     <div class="col l2 m4 s12 info">
         <img src="{{ anime.picture }}" width="100%" title="{{anime.name}}"/>
         <div class="left-align">
+            <div>
+                {% if following != null %}
+                    <a href="{{ path('anime_unfollow', {'id': anime.id }) }}"><button class="active">Unfollow</button></a>
+                {% else %}
+                    <a href="{{ path('anime_follow', {'id': anime.id }) }}"><button class="inactive">Follow</button></a>
+                {% endif %}
+                {% if (following != null) and (following[0].favori == 1) %}
+                    <a href="{{ path('anime_unfav', {'id': anime.id }) }}"><button class="active">Unfav'</button></a>
+                {% else %}
+                    <a href="{{ path('anime_fav', {'id': anime.id }) }}"><button class="inactive">Fav'</button></a>
+                {% endif %}
+            </div>
             <p>
                 <strong>Type</strong>
                 :
@@ -26,12 +38,22 @@
             <p>
                 <strong>Aired</strong>
                 :
-                {% if anime.aired %}{{ anime.aired|date('Y-m-d H:i:s') }}{% endif %}
+                {% if anime.aired %}{{ anime.aired|date('Y-m-d') }}{% endif %}
             </p>
             <p>
                 <strong>Studios</strong>
                 :
                 {{anime.studios}}
+            </p>
+            <p>
+                <strong>Licensors</strong>
+                :
+                {{anime.licensors}}
+            </p>
+            <p>
+                <strong>Producers</strong>
+                :
+                {{anime.producers}}
             </p>
             <p>
                 <strong>Genres</strong>
@@ -50,7 +72,7 @@
                 {{anime.rating}}
             </p>
             <p>
-                <strong>Score (avg) :</strong>
+                <strong>Score (avg) : </strong>
                  {% if notationAvg != 0 %}
                     {{ notationAvg|round }}
                  {% else %}
@@ -58,12 +80,12 @@
                  {% endif %}
             </p>
             <p>
-                <strong>Followers</strong>
-                : SERVICE
+                <strong>Followers : </strong>
+                {{ followers|round }}
             </p>
             <p>
-                <strong>Favorites</strong>
-                : SERVICE
+                <strong>Favorites : </strong>
+                {{ favoris|round }}
             </p>
         </div>
     </div>
@@ -117,7 +139,7 @@
 
         <!-- Episodes -->
         <div class="section section-5">
-            <h5>Episodes</h5>
+            <h5>Episodes ({{ episodeCount }})</h5>
             {% for episode in episodes %}
                 <a href="{{ path('episode_show', { 'id': episode.id }) }}">
                     <div class="col s12 m12 l12">

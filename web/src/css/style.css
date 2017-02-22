@@ -99,3 +99,11 @@ strong {
 /*select{
 display:block!important;
 }*/
+
+
+button.active, button.inactive:focus, button.inactive:hover {
+    background-color: red !important;
+}
+button.inactive, button.active:focus, button.active:hover {
+     background-color: grey;
+}

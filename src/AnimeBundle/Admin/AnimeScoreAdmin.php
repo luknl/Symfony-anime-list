@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 
 class AnimeScoreAdmin extends AbstractAdmin
 {
@@ -21,7 +22,12 @@ class AnimeScoreAdmin extends AbstractAdmin
                 'class' => 'AnimeBundle\Entity\User',
                 'property' => 'username',
             ))
-            ->add('value')
+            ->add('value', 'integer', array(
+                'attr' => array(
+                    'min' => 0,
+                    'max' => 10,
+                )
+            ))
         ;
     }
 

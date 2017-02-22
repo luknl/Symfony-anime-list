@@ -21,7 +21,12 @@ class EpisodeScoreAdmin extends AbstractAdmin
                 'class' => 'AnimeBundle\Entity\User',
                 'property' => 'username',
             ))
-            ->add('value')
+            ->add('value', 'integer', array(
+                'attr' => array(
+                    'min' => 0,
+                    'max' => 10,
+                )
+            ))
         ;
     }
 

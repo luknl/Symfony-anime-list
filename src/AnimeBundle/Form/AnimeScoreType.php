@@ -24,7 +24,12 @@ class AnimeScoreType extends AbstractType
                 'multiple' => false,
                 'expanded' => false, // true : radio, false : select
             ))
-            ->add('value')
+            ->add('value', 'integer', array(
+                'attr' => array(
+                    'min' => 0,
+                    'max' => 10,
+                )
+            ))
         ;
     }
     
