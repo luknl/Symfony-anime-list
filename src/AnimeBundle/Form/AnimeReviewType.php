@@ -32,7 +32,7 @@ class AnimeReviewType extends AbstractType
                         ->setParameter('anime', $anime);
                 }
             ))
-            ->add('value')
+            ->add('value', 'textarea')
         ;
     }
     

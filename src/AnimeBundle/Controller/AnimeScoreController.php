@@ -45,22 +45,38 @@ class AnimeScoreController extends Controller
      */
     public function newAction(Request $request)
     {
-        $animeScore = new Animescore();
-        $form = $this->createForm('AnimeBundle\Form\AnimeScoreType', $animeScore);
-        $form->handleRequest($request);
+        if ( $this->getUser() ){
+            $animeScore = new Animescore();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($animeScore);
-            $em->flush($animeScore);
+            $animeid = $request->query->get('anime');
+            $animeScore->setUser($this->getUser());
 
-            return $this->redirectToRoute('animescore_show', array('id' => $animeScore->getId()));
+            $form = $this->createForm('AnimeBundle\Form\AnimeScoreType', $animeScore, array(
+                'anime' => $animeid
+            ));
+            $form->handleRequest($request);
+
+
+            $repository = $this->getDoctrine()->getManager()->getRepository('AnimeBundle:Anime');
+            $anime = $repository->findById($animeid);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($animeScore);
+                $em->flush($animeScore);
+
+                return $this->redirectToRoute('anime_show', array( 'id' => $animeScore->getAnime()->getId() ));
+            }
+
+            return $this->render('animescore/new.html.twig', array(
+                'animeScore' => $animeScore,
+                'form' => $form->createView(),
+                'anime' => $anime,
+            ));
         }
-
-        return $this->render('animescore/new.html.twig', array(
-            'animeScore' => $animeScore,
-            'form' => $form->createView(),
-        ));
+        else {
+            return $this->redirectToRoute('fos_user_security_login');
+        }
     }
 
     /**

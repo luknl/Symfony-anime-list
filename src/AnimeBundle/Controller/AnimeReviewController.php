@@ -57,8 +57,8 @@ class AnimeReviewController extends Controller
             $form->handleRequest($request);
 
 
-
-            #$animeReview->setCreated( new \DateTime('now') );
+            $repository = $this->getDoctrine()->getManager()->getRepository('AnimeBundle:Anime');
+            $anime = $repository->findById($animeid);
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -71,6 +71,7 @@ class AnimeReviewController extends Controller
             return $this->render('animereview/new.html.twig', array(
                 'animeReview' => $animeReview,
                 'form' => $form->createView(),
+                'anime' => $anime,
             ));
         }
         else {

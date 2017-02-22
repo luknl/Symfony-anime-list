@@ -31,6 +31,19 @@
                 {% endif %}
             </div>
             <p>
+                <strong>Score (avg) : </strong>
+                {% if notationAvg != 0 %}
+                    {{ notationAvg|round }}
+                {% else %}
+                    Pas de notes
+                {% endif %}
+            </p>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <p>
+                <a href="{{ path('animescore_new', {'anime': anime.id}) }}">Note This Anime</a>
+            </p>
+            {% endif %}
+            <p>
                 <strong>Type</strong>
                 :
                 {{typeName}}
@@ -70,14 +83,6 @@
                 <strong>Rating</strong>
                 :
                 {{anime.rating}}
-            </p>
-            <p>
-                <strong>Score (avg) : </strong>
-                 {% if notationAvg != 0 %}
-                    {{ notationAvg|round }}
-                 {% else %}
-                    Pas de notes
-                 {% endif %}
             </p>
             <p>
                 <strong>Followers : </strong>

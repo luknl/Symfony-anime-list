@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Animescore creation</h1>
+    <h3>Note this Anime</h3>
+    {% for theanime in anime %}
+        <h5>{{ theanime.name }}</h5>
+    {% endfor %}
+
+    <!-- Hide dropdowns -->
+    <div style="width:400px;height:60px;background:white;position:absolute;margin-left:calc(50% - 400px)"></div>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    {{ form_widget(form) }}
+    <input type="submit" value="Create" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('animescore_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}
