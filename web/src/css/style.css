@@ -1,10 +1,8 @@
 body{
-  background-color: #E8E8E8;
   font-family: times;
 }
 
 header {
-  background: white;
   display:flex;
   padding:20px 0;
   text-align: center;
@@ -64,3 +62,40 @@ header .user_infos {
 .date p {
   font-size:50px;
 }
+
+.info {
+  background-color: #EDEDED;
+}
+
+strong {
+  font-weight: 400;
+}
+
+.anime_title{
+  background-color: #040404!important;
+  color:white;
+}
+
+.ads {
+  width:200px;
+}
+
+@media only screen and (max-width:1550px) {
+  .ads {
+    width:150px;
+  }
+
+  .ads img{
+    width:150px;
+  }
+}
+
+@media only screen and (max-width:1310px) {
+  .ads {
+    display:none;
+  }
+}
+
+/*select{
+display:block!important;
+}*/

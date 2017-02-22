@@ -11,7 +11,19 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
   </head>
   <body>
+
+  <div style="float:left;margin-left:20px;margin-top:20px;" class="ads">
+    <img src="{{ asset('src/imgs/chocoball.png') }}" style="position:fixed" width="200px" alt="">
+    <img src="{{ asset('src/imgs/img7.png') }}" style="position:fixed;margin-top:400px" width="200px;" alt="">
+  </div>
+
+  <div style="float:right;margin-right:20px;margin-top:20px;" class="ads">
+    <img src="{{ asset('src/imgs/img10.png') }}" style="position:fixed" width="200px" alt="">
+    <img src="{{ asset('src/imgs/tenga.png') }}" style="position:fixed;margin-top:550px" width="200px;" alt="">
+  </div>
+
     <header>
+
       <a href="{{ path('homepage') }}"><img src="{{ asset('src/imgs/logo.png') }}" class="logo" width="150px" alt=""></a>
       <img src="{{ asset('src/imgs/img1.png') }}" width="600px" alt="">
       <ul>
@@ -49,14 +61,14 @@
             </a>
           </li>
           <li>
-              <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+              <a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('src/imgs/power.png') }}" width="20px" alt=""></a>
           </li>
         {% else %}
           <li>
-              <a href="{{ path('fos_user_security_login') }}">Login</a>
+              <a href="{{ path('fos_user_security_login') }}"><img src="{{ asset('src/imgs/login.png') }}" width="20px" alt=""></a>
           </li>
           <li>
-              <a href="{{ path('fos_user_registration_register') }}">Register</a>
+              <a href="{{ path('fos_user_registration_register') }}"><img src="{{ asset('src/imgs/register.png') }}" width="20px" alt=""></a>
           </li>
         {% endif %}
 
