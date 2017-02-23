@@ -47,4 +47,16 @@ class UserHasAnimesRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('user', $user)
             ->getResult();
     }
+
+    /**
+     * @return array
+     */
+    /*public function getFollowersRanking()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT count(p) AS p.followers, p.anime FROM AnimeBundle:UserHasAnimes p GROUP BY p.anime ORDER BY p.followers DESC ')
+            ->getResult();
+    }*/
+
+
 }
