@@ -1,12 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Episode</h1>
+
+<h4 style="padding-bottom:50px;">Episode</h4>
+
+<div class="row">
+  <div class="col s12 m6 l3 episode_bg">
     <h5>{{ episode.name }}</h5>
-    <p>From <a href="{{ path('anime_show', { 'id': episode.anime.id }) }}">{{ animeName }}</a></p>
-
-    <div>{{ episode.description }}</div>
-
-    <p>Duration : {{ episode.duration }} minutes - Aired on : {% if episode.aired %}{{ episode.aired|date('m-d-Y') }}{% endif %}</p>
+    <img src="{{episode.anime.picture}}" height="270px"/>
+    <p><strong>Anime : </strong><a href="{{ path('anime_show', { 'id': episode.anime.id }) }}">{{ animeName }}</a></p>
+    <p><strong>Duration : </strong>{{ episode.duration }} minutes</p>
+    <p><strong>Aired on : </strong>{% if episode.aired %}{{ episode.aired|date('m-d-Y') }}{% endif %}</p>
+  </div>
+  <div class="col s12 m6 l9">
+    <h4>Synopsis</h4>
+    <p>{{ episode.description }}</p>
+  </div>
+</div>
 
 {% endblock %}

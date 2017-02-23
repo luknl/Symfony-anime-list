@@ -40,7 +40,7 @@
             </p>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <p>
-                <a href="{{ path('animescore_new', {'anime': anime.id}) }}">Note This Anime</a>
+                <a href="{{ path('animescore_new', {'anime': anime.id}) }}">Rate This Anime</a>
             </p>
             {% endif %}
             <p>
@@ -80,11 +80,6 @@
                 minutes
             </p>
             <p>
-                <strong>Rating</strong>
-                :
-                {{anime.rating}}
-            </p>
-            <p>
                 <strong>Followers : </strong>
                 {{ followers|round }}
             </p>
@@ -122,7 +117,7 @@
             {% for review in reviews %}
                 <div class="col s12 m12 l12" style="margin-bottom: 30px;">
                     <p>
-                      <span>By {{review.user}}</span>
+                      <span><strong>{{review.user}}</strong></span>
                       <span style="margin-left: 30px; color: grey;">{% if review.user == user %}<a href="{{ path('animereview_edit', {'id': review.id}) }}">Edit</a>{% endif %}</span>
                     </p>
                     <span>{{review.value}}</span>
