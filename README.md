@@ -6,9 +6,13 @@ Neussaipa - E11 - My Anime List
 * Clone the project `git clone https://github.com/luknl/E17---Neussaipa.git`
 * Run composer `composer install`
 * Create the database `sf doctrine:database:create`
+
 > Import *Neussaipa.sql* in database in phpMyAdmin
+
 * Run the server `sf server:run`
+
 > Login with *pseudo: admin* and *password: admin* to have access to all functionnalities
+
 
 ##Configs
 This project uses the framework *Symfony 3.2* for PHP
