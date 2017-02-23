@@ -24,9 +24,7 @@ class AnimeScoreController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $animeScores = $em->getRepository('AnimeBundle:AnimeScore')->findAll();
-
         $animeName = [];
         foreach ($animeScores as $animeScore) {
             $animeName[$animeScore->getId()] = $animeScore->getAnime()->getName();
@@ -48,20 +46,15 @@ class AnimeScoreController extends Controller
     {
         if ($this->getUser()) {
             $animeScore = new Animescore();
-
             $animeid = $request->query->get('anime');
             if (!$animeid) {
                 throw $this->createNotFoundException('No route found');
             }
-
             $animeScore->setUser($this->getUser());
-
             $form = $this->createForm('AnimeBundle\Form\AnimeScoreType', $animeScore, array(
                 'anime' => $animeid
             ));
             $form->handleRequest($request);
-
-
             $repository = $this->getDoctrine()->getManager()->getRepository('AnimeBundle:Anime');
             $anime = $repository->findById($animeid);
 
@@ -79,6 +72,7 @@ class AnimeScoreController extends Controller
                 'anime' => $anime,
             ));
         } else {
+
             return $this->redirectToRoute('fos_user_security_login');
         }
     }

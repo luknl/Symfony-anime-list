@@ -27,21 +27,17 @@ class AnimeReviewController extends Controller
     {
         if ($this->getUser()) {
             $animeReview = new Animereview();
-
             $animeid = $request->query->get('anime');
             if (!$animeid) {
                 throw $this->createNotFoundException('No route found');
             }
             $animeReview->setUser($this->getUser());
-
             $form = $this->createForm('AnimeBundle\Form\AnimeReviewType', $animeReview, array(
                 'anime' => $animeid
             ));
             $form->handleRequest($request);
-
             $repository = $this->getDoctrine()->getManager()->getRepository('AnimeBundle:Anime');
             $anime = $repository->findById($animeid);
-
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($animeReview);
@@ -56,6 +52,7 @@ class AnimeReviewController extends Controller
                 'anime' => $anime,
             ));
         } else {
+
             return $this->redirectToRoute('fos_user_security_login');
         }
     }
@@ -69,14 +66,11 @@ class AnimeReviewController extends Controller
     {
         if ($animeReview->getUser() == $this->getUser()) {
             $deleteForm = $this->createDeleteForm($animeReview);
-
             $animeid = $animeReview->getAnime()->getId();
-
             $editForm = $this->createForm('AnimeBundle\Form\AnimeReviewType', $animeReview, array(
                 'anime' => $animeid
             ));
             $editForm->handleRequest($request);
-
             if ($editForm->isSubmitted() && $editForm->isValid()) {
                 $this->getDoctrine()->getManager()->flush();
 
@@ -92,6 +86,7 @@ class AnimeReviewController extends Controller
                 )
             );
         } else {
+
             return $this->redirectToRoute('anime_show', array('id' => $animeReview->getAnime()->getId()));
         }
     }
@@ -108,10 +103,8 @@ class AnimeReviewController extends Controller
     public function deleteAction(Request $request, AnimeReview $animeReview)
     {
         $animeid = $animeReview->getAnime()->getId();
-
         $form = $this->createDeleteForm($animeReview);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($animeReview);
@@ -130,10 +123,10 @@ class AnimeReviewController extends Controller
      */
     private function createDeleteForm(AnimeReview $animeReview)
     {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('animereview_delete', array('id' => $animeReview->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-            ;
+            ->getForm();
     }
 }
