@@ -25,10 +25,10 @@ The following Bundles are used :
 
 * `git clone https://github.com/luknl/E17---Neussaipa.git`
 * `composer install`
-	- Port : 8889 (dépend de ce qu’on a mis dans MAMP)
+	- Port : 3306 (dépendant de ce que vous avez dans MAMP)
 	- database password : root
 * `php bin/symfony_requirements` => Tester si Symfony est bien installé
-(Pas oublier d'allumer MAMP)
+(Ne pas oublier d'allumer MAMP)
 * `sf doctrine:database:create`
 * `sf doctrine:schema:update --force`
 * (Si erreurs `sf doctrine:database:drop` puis recommencer)
@@ -38,8 +38,6 @@ The following Bundles are used :
 ##### Autres commandes
 
 * `sf debug:container` => Liste tout les services
-* `sf debug:container | grep account` => Liste les services contenant « account » 
-* `sf debug:container app.service.accounting_service` => Toutes les infos sur ce service
 * `sf debug:router` => Vérife les routes
 * `vendor/bin/phpunit` : Lancer le/les test(s) unitaire(s)
 
