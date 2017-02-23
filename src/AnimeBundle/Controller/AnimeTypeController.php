@@ -21,7 +21,7 @@ class AnimeTypeController extends Controller
      * @Route("/", name="animetype_index")
      * @Method("GET")
      */
-    public function indexAction()
+    /*public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -30,7 +30,7 @@ class AnimeTypeController extends Controller
         return $this->render('animetype/index.html.twig', array(
             'animeTypes' => $animeTypes,
         ));
-    }
+    }*/
 
     /**
      * Finds and displays a animeType entity.
@@ -38,7 +38,7 @@ class AnimeTypeController extends Controller
      * @Route("/{id}", name="animetype_show")
      * @Method("GET")
      */
-    public function showAction(AnimeType $animeType)
+    /*public function showAction(AnimeType $animeType)
     {
         #$deleteForm = $this->createDeleteForm($animeType);
 
@@ -46,7 +46,7 @@ class AnimeTypeController extends Controller
             'animeType' => $animeType,
             #'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
 
     /**
@@ -56,12 +56,12 @@ class AnimeTypeController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(AnimeType $animeType)
+    /*private function createDeleteForm(AnimeType $animeType)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('animetype_delete', array('id' => $animeType->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
-    }
+    }*/
 }

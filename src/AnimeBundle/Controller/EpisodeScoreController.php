@@ -21,7 +21,7 @@ class EpisodeScoreController extends Controller
      * @Route("/", name="episodescore_index")
      * @Method("GET")
      */
-    public function indexAction()
+    /*public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -36,7 +36,7 @@ class EpisodeScoreController extends Controller
             'episodeScores' => $episodeScores,
             'episodeName' => $episodeName,
         ));
-    }
+    }*/
 
     /**
      * Creates a new episodeScore entity.
@@ -44,7 +44,7 @@ class EpisodeScoreController extends Controller
      * @Route("/new", name="episodescore_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    /*public function newAction(Request $request)
     {
         $episodeScore = new Episodescore();
         $form = $this->createForm('AnimeBundle\Form\EpisodeScoreType', $episodeScore);
@@ -62,7 +62,7 @@ class EpisodeScoreController extends Controller
             'episodeScore' => $episodeScore,
             'form' => $form->createView(),
         ));
-    }
+    }*/
 
     /**
      * Finds and displays a episodeScore entity.
@@ -70,7 +70,7 @@ class EpisodeScoreController extends Controller
      * @Route("/{id}", name="episodescore_show")
      * @Method("GET")
      */
-    public function showAction(EpisodeScore $episodeScore)
+    /*public function showAction(EpisodeScore $episodeScore)
     {
         #$deleteForm = $this->createDeleteForm($episodeScore);
 
@@ -81,7 +81,7 @@ class EpisodeScoreController extends Controller
             'episodeName' => $episodeName,
             #'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Displays a form to edit an existing episodeScore entity.
@@ -135,12 +135,12 @@ class EpisodeScoreController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(EpisodeScore $episodeScore)
+    /*private function createDeleteForm(EpisodeScore $episodeScore)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('episodescore_delete', array('id' => $episodeScore->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
-    }
+    }*/
 }
