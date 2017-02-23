@@ -49,6 +49,10 @@ class AnimeScoreController extends Controller
             $animeScore = new Animescore();
 
             $animeid = $request->query->get('anime');
+            if ( !$animeid) {
+                throw $this->createNotFoundException('This road does not exist, must be associated with an anime');
+            }
+
             $animeScore->setUser($this->getUser());
 
             $form = $this->createForm('AnimeBundle\Form\AnimeScoreType', $animeScore, array(

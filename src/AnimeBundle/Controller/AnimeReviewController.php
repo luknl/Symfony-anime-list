@@ -49,6 +49,9 @@ class AnimeReviewController extends Controller
             $animeReview = new Animereview();
 
             $animeid = $request->query->get('anime');
+            if ( !$animeid) {
+                throw $this->createNotFoundException('This road does not exist, must be associated with an anime');
+            }
             $animeReview->setUser($this->getUser());
 
             $form = $this->createForm('AnimeBundle\Form\AnimeReviewType', $animeReview, array(

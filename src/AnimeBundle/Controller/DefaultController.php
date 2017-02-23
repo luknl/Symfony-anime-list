@@ -12,6 +12,11 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $episodes = $em->getRepository('AnimeBundle:Episode')->findAllOrderByDate();
+
+        return $this->render('default/index.html.twig', array(
+            'episodes' => $episodes,
+        ));
     }
 }
