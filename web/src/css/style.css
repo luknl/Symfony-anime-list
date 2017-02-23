@@ -1,5 +1,17 @@
+@font-face {
+    font-family: SourceCodePro;
+    src: url(../fonts/SourceCodePro-Regular.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: SourceCodeProBold;
+    src: url(../fonts/SourceCodePro-Bold.ttf);
+
+}
+
 body{
-  font-family: times;
+  font-family: 'SourceCodePro';
 }
 
 header {
@@ -68,7 +80,7 @@ header .user_infos {
 }
 
 strong {
-  font-weight: 400;
+  font-family: "SourceCodeProBold"
 }
 
 .anime_title{

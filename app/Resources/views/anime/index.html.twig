@@ -1,21 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>Anime list</h1>
+<h5 style="margin-bottom:40px;">Anime list</h5>
 <div class="row">
     {% for anime in animes %}
-        <div class="col s12 m6 l3">
-            <div class="card">
-                <div class="card-content">
+        <div class="col s12 m6 l3" style="height:500px;">
                     <a href="{{ path('anime_show', { 'id': anime.id }) }}">
                        <img src="{{anime.picture}}" height="320px" title="{{anime.name}}"/>
                     </a>
                     <p>{{anime.name}}</p>
-                </div>
-                <div class="card-action link">
-                    <a href="{{ path('anime_show', { 'id': anime.id }) }}"><button type="button" class="btn btn-lg btn-primary">See details</button></a>
-                </div>
-            </div>
+                    <a href="{{ path('anime_show', { 'id': anime.id }) }}"><button type="button">See details</button></a>
         </div>
     {% endfor %}
 </div>
