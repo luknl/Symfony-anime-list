@@ -1,29 +1,32 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
-    <h1>Mon profil</h1>
+<div class="row">
+
+  <div class="col s12 m6 l3 episode_bg">
+    <h4 style="margin-bottom:20px">My profile</h4>
     <div class="fos_user_user_show">
-        <p>Username: {{ user.username }}</p>
-        <p>Email: {{ user.email }}</p>
+        <img src="{{ asset('src/imgs/profile.png') }}" height="200px" alt="">
+        <h5>{{ user.username }}</h5>
+        <p><strong>Following : </strong>{{ userHasAnimesCount }}</p>
+        <p><strong>Favorites : </strong>{{ favorisCount}}</p>
+        <p><strong>Reviews : </strong>{{ reviewsCount }}</p>
     </div>
 
 
-    <h3>Animes I follow - {{ userHasAnimesCount }}</h3>
+  </div>
+  <div class="col s12 m6 l9">
+    <h4>Animes I follow</h4>
     <div class="row">
     {% for userHasAnime in userHasAnimes %}
-        <div class="col s12 m6 l3">
-            <div class="card">
-                <div class="card-content">
-                    <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}">
-                        <img src="{{userHasAnime.anime.picture}}" height="320px" title="{{userHasAnime.anime.name}}"/>
-                    </a>
-                    <p>{{userHasAnime.anime.name}}</p>
-                </div>
-                <div class="card-action link">
-                    <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}"><button type="button" class="btn btn-lg btn-primary">See details</button></a>
-                </div>
-            </div>
+        <div class="col s12 m6 l3" style="height:500px">
+            <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}">
+               <img src="{{userHasAnime.anime.picture}}" height="270px" title="{{userHasAnime.anime.name}}"/>
+            </a>
+            <p>{{userHasAnime.anime.name}}</p>
+            <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}"><button type="button">See details</button></a>
         </div>
+
     {% endfor %}
     </div>
 
@@ -31,25 +34,19 @@
     <div class="row">
     {% for userHasAnime in userHasAnimes %}
         {% if userHasAnime.favori == 1 %}
-            <div class="col s12 m6 l3">
-                <div class="card">
-                    <div class="card-content">
-                        <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}">
-                            <img src="{{userHasAnime.anime.picture}}" height="320px" title="{{userHasAnime.anime.name}}"/>
-                        </a>
-                        <p>{{userHasAnime.anime.name}}</p>
-                    </div>
-                    <div class="card-action link">
-                        <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}"><button type="button" class="btn btn-lg btn-primary">See details</button></a>
-                    </div>
-                </div>
+            <div class="col s12 m6 l3" style="height:500px;">
+                <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}">
+                   <img src="{{userHasAnime.anime.picture}}" height="270px" title="{{userHasAnime.anime.name}}"/>
+                </a>
+                <p>{{userHasAnime.anime.name}}</p>
+                <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}"><button type="button">See details</button></a>
             </div>
         {% endif %}
     {% endfor %}
     </div>
 
 
-    <h3>My reviews  - {{ reviewsCount }}</h3>
+    <h3>My reviews</h3>
     <div class="row">
         {% for review in reviews %}
             <div class="col s12 m12 l12" style="margin-bottom: 30px;">
@@ -63,7 +60,6 @@
             </div>
         {% endfor %}
     </div>
-
-
+  </div>
+</div>
 {% endblock fos_user_content %}
-

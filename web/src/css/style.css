@@ -116,6 +116,10 @@ strong {
   }
 }
 
+.episode_bg {
+  background:rgb(224,224,224);
+}
+
 /*select{
 display:block!important;
 }*/
