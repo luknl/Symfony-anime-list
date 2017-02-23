@@ -5,7 +5,8 @@ namespace AnimeBundle\Controller;
 use AnimeBundle\Entity\AnimeScore;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Animescore controller.
@@ -27,7 +28,7 @@ class AnimeScoreController extends Controller
         $animeScores = $em->getRepository('AnimeBundle:AnimeScore')->findAll();
 
         $animeName = [];
-        foreach($animeScores as $animeScore) {
+        foreach ($animeScores as $animeScore) {
             $animeName[$animeScore->getId()] = $animeScore->getAnime()->getName();
         }
 
@@ -45,11 +46,11 @@ class AnimeScoreController extends Controller
      */
     public function newAction(Request $request)
     {
-        if ( $this->getUser() ){
+        if ($this->getUser()) {
             $animeScore = new Animescore();
 
             $animeid = $request->query->get('anime');
-            if ( !$animeid) {
+            if (!$animeid) {
                 throw $this->createNotFoundException('This road does not exist, must be associated with an anime');
             }
 
@@ -77,8 +78,7 @@ class AnimeScoreController extends Controller
                 'form' => $form->createView(),
                 'anime' => $anime,
             ));
-        }
-        else {
+        } else {
             return $this->redirectToRoute('fos_user_security_login');
         }
     }

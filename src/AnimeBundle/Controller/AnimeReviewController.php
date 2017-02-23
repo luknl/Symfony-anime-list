@@ -5,7 +5,8 @@ namespace AnimeBundle\Controller;
 use AnimeBundle\Entity\AnimeReview;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Animereview controller.
@@ -15,41 +16,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class AnimeReviewController extends Controller
 {
     /**
-     * Lists all animeReview entities.
-     *
-     * @Route("/", name="animereview_index")
-     * @Method("GET")
-     */
-    /*public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $animeReviews = $em->getRepository('AnimeBundle:AnimeReview')->findAll();
-
-        $animeName = [];
-        foreach($animeReviews as $animeReview) {
-            $animeName[$animeReview->getId()] = $animeReview->getAnime()->getName();
-        }
-
-        return $this->render('animereview/index.html.twig', array(
-            'animeReviews' => $animeReviews,
-            'animeName' => $animeName,
-        ));
-    }*/
-
-    /**
      * Creates a new animeReview entity.
+     * @param Request $request
      *
      * @Route("/new", name="animereview_new")
      * @Method({"GET", "POST"})
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {
-        if ( $this->getUser() ){
+        if ($this->getUser()) {
             $animeReview = new Animereview();
 
             $animeid = $request->query->get('anime');
-            if ( !$animeid) {
+            if (!$animeid) {
                 throw $this->createNotFoundException('This road does not exist, must be associated with an anime');
             }
             $animeReview->setUser($this->getUser());
@@ -59,7 +39,6 @@ class AnimeReviewController extends Controller
             ));
             $form->handleRequest($request);
 
-
             $repository = $this->getDoctrine()->getManager()->getRepository('AnimeBundle:Anime');
             $anime = $repository->findById($animeid);
 
@@ -68,7 +47,7 @@ class AnimeReviewController extends Controller
                 $em->persist($animeReview);
                 $em->flush($animeReview);
 
-                return $this->redirectToRoute('anime_show', array( 'id' => $animeReview->getAnime()->getId() ));
+                return $this->redirectToRoute('anime_show', array('id' => $animeReview->getAnime()->getId()));
             }
 
             return $this->render('animereview/new.html.twig', array(
@@ -76,41 +55,19 @@ class AnimeReviewController extends Controller
                 'form' => $form->createView(),
                 'anime' => $anime,
             ));
-        }
-        else {
+        } else {
             return $this->redirectToRoute('fos_user_security_login');
         }
-
     }
 
     /**
-     * Finds and displays a animeReview entity.
-     *
-     * @Route("/{id}", name="animereview_show")
-     * @Method("GET")
-     */
-    /*public function showAction(AnimeReview $animeReview)
-    {
-        #$deleteForm = $this->createDeleteForm($animeReview);
-
-        $animeName = $animeReview->getAnime()->getName();
-
-        return $this->render('animereview/show.html.twig', array(
-            'animeReview' => $animeReview,
-            'animeName' => $animeName,
-            #'delete_form' => $deleteForm->createView(),
-        ));
-    }*/
-
-    /**
      * Displays a form to edit an existing animeReview entity.
-     *
      * @Route("/{id}/edit", name="animereview_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, AnimeReview $animeReview)
     {
-        if ( $animeReview->getUser() == $this->getUser() ) {
+        if ($animeReview->getUser() == $this->getUser()) {
             $deleteForm = $this->createDeleteForm($animeReview);
 
             $animeid = $animeReview->getAnime()->getId();
@@ -134,9 +91,8 @@ class AnimeReviewController extends Controller
                     'delete_form' => $deleteForm->createView(),
                 )
             );
-        }
-        else {
-            return $this->redirectToRoute('anime_show', array( 'id' => $animeReview->getAnime()->getId() ));
+        } else {
+            return $this->redirectToRoute('anime_show', array('id' => $animeReview->getAnime()->getId()));
         }
     }
 
@@ -145,6 +101,9 @@ class AnimeReviewController extends Controller
      *
      * @Route("/{id}", name="animereview_delete")
      * @Method("DELETE")
+     * @param Request $request
+     * @param AnimeReview $animeReview
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request, AnimeReview $animeReview)
     {
@@ -159,7 +118,7 @@ class AnimeReviewController extends Controller
             $em->flush($animeReview);
         }
 
-        return $this->redirectToRoute('anime_show', array( 'id' => $animeid ));
+        return $this->redirectToRoute('anime_show', array('id' => $animeid));
     }
 
     /**
@@ -175,6 +134,6 @@ class AnimeReviewController extends Controller
             ->setAction($this->generateUrl('animereview_delete', array('id' => $animeReview->getId())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
 }
