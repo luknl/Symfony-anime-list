@@ -1,35 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Anime Genres</h1>
+    <h4>Anime Genres</h4>
     <p>Select a genre</p>
 
     <div class="row genres">
         {% for animeGenre in animeGenres %}
             <a href="{{ path('animegenre_show', {'id': animeGenre.id }) }}">
                 <div class="col s12 m6 l3">
-                    <div class="card">
-                        <div class="card-content">
-                            {% if animeGenre.name == genre.name %}
-                                <p style="color:green; text-transform: uppercase;">{{animeGenre.name}}</p>
-                            {% else %}
-                                {{animeGenre.name}}
-                            {%  endif %}
-                        </div>
-                    </div>
+                    <p class="episode_bg">{{animeGenre.name}}</p>
                 </div>
             </a>
         {% endfor %}
     </div>
 
-    {% for anime in animes %}
-        <a href="{{ path('anime_show', { 'id': anime.id }) }}">
-            <div class="col s12 m12 l12">
-                <div class="divider"></div>
-                <img src="{{anime.picture}}" style="height: 100px;"/>
-                <span>{{anime.name}}</span>
-            </div>
-        </a>
-    {% endfor %}
+    <div class="row">
+      {% for anime in animes %}
+          <a href="{{ path('anime_show', { 'id': anime.id }) }}">
+              <div class="col l4 m4 s12">
+                  <div class="divider"></div>
+                  <p>{{anime.name}}</p>
+                  <img src="{{ anime.picture }}" height="200px" title="{{anime.name}}"/>
+              </div>
+          </a>
+      {% endfor %}
+    </div>
+
 
 {% endblock %}

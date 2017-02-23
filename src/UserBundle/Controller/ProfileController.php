@@ -49,12 +49,20 @@ class ProfileController extends Controller
         $userHasAnimesCount = count($userHasAnimes);
         $reviewsCount = count($reviews);
 
+        $favorisCount = 0;
+        foreach ($userHasAnimes as $userHasAnime) {
+          if ($userHasAnime->getFavori() == 1) {
+            $favorisCount ++;
+          }
+        }
+
         return $this->render('@FOSUser/Profile/show.html.twig', array(
             'user' => $user,
             'userHasAnimes' => $userHasAnimes,
             'userHasAnimesCount' => $userHasAnimesCount,
             'reviews' => $reviews,
             'reviewsCount' => $reviewsCount,
+            'favorisCount' => $favorisCount,
         ));
     }
 
