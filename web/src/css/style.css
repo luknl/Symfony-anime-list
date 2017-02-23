@@ -139,3 +139,14 @@ button.inactive, button.active:focus, button.active:hover {
 .genres a:focus, .genres a:hover, .genres a:active {
   color: red;
 }
+
+
+
+.ranking {
+  border: 1px solid blue;
+  margin: 20px 0;
+}
+.ranking .title {
+  font-size: 18px;
+  text-decoration: underline;
+}

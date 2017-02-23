@@ -21,4 +21,15 @@ class AnimeScoreRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('id', $animeId)
             ->getSingleScalarResult();
     }
+
+    /**
+     * @return array
+     */
+    public function getScoreRanking()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT AVG(p.value) as score, partial a.{id, name} FROM AnimeBundle:AnimeScore p JOIN AnimeBundle:Anime AS a WITH p.anime = a GROUP BY p.anime ORDER BY score DESC')
+            ->setMaxResults(3)
+            ->getResult();
+    }
 }
