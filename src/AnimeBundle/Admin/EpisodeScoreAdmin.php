@@ -8,8 +8,15 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+/**
+ * Class EpisodeScoreAdmin
+ * @package AnimeBundle\Admin
+ */
 class EpisodeScoreAdmin extends AbstractAdmin
 {
+    /**
+     * @param FormMapper $formMapper
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -30,6 +37,9 @@ class EpisodeScoreAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -45,6 +55,9 @@ class EpisodeScoreAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param ListMapper $listMapper
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -54,6 +67,10 @@ class EpisodeScoreAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param mixed $object
+     * @return string
+     */
     public function toString($object)
     {
         return $object instanceof EpisodeScore

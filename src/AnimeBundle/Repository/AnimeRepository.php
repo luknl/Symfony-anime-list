@@ -10,6 +10,10 @@ namespace AnimeBundle\Repository;
  */
 class AnimeRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $id
+     * @return array
+     */
     public function findById($id)
     {
         return $this->getEntityManager()
@@ -17,6 +21,11 @@ class AnimeRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('id', $id)
             ->getResult();
     }
+
+    /**
+     * @param $genreid
+     * @return array
+     */
     public function findByGenre($genreid)
     {
         return $this->getEntityManager()

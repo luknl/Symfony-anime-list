@@ -10,6 +10,10 @@ namespace AnimeBundle\Repository;
  */
 class AnimeReviewRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $id
+     * @return array
+     */
     public function findAllById($id)
     {
         return $this->getEntityManager()

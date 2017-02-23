@@ -10,6 +10,10 @@ namespace AnimeBundle\Repository;
  */
 class AnimeScoreRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $animeId
+     * @return mixed
+     */
     public function getAverageById($animeId)
     {
         return $this->getEntityManager()

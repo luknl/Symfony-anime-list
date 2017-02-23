@@ -9,8 +9,16 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 
+
+/**
+ * Class AnimeScoreAdmin
+ * @package AnimeBundle\Admin
+ */
 class AnimeScoreAdmin extends AbstractAdmin
 {
+    /**
+     * @param FormMapper $formMapper
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -31,6 +39,9 @@ class AnimeScoreAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -46,6 +57,9 @@ class AnimeScoreAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param ListMapper $listMapper
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -55,6 +69,10 @@ class AnimeScoreAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param mixed $object
+     * @return string
+     */
     public function toString($object)
     {
         return $object instanceof AnimeScore

@@ -10,6 +10,10 @@ namespace AnimeBundle\Repository;
  */
 class EpisodeRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $id
+     * @return array
+     */
     public function findAllById($id)
     {
         return $this->getEntityManager()
@@ -18,6 +22,9 @@ class EpisodeRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+    /**
+     * @return array
+     */
     public function findAllOrderByDate()
     {
         return $this->getEntityManager()

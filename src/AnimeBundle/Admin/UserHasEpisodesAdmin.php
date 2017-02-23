@@ -8,8 +8,15 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
+/**
+ * Class UserHasEpisodesAdmin
+ * @package AnimeBundle\Admin
+ */
 class UserHasEpisodesAdmin extends AbstractAdmin
 {
+    /**
+     * @param FormMapper $formMapper
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -25,6 +32,9 @@ class UserHasEpisodesAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
@@ -40,6 +50,9 @@ class UserHasEpisodesAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param ListMapper $listMapper
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -49,6 +62,10 @@ class UserHasEpisodesAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param mixed $object
+     * @return string
+     */
     public function toString($object)
     {
         return $object instanceof UserHasEpisodes

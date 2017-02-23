@@ -8,8 +8,15 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
+/**
+ * Class EpisodeAdmin
+ * @package AnimeBundle\Admin
+ */
 class EpisodeAdmin extends AbstractAdmin
 {
+    /**
+     * @param FormMapper $formMapper
+     */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -26,11 +33,17 @@ class EpisodeAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param DatagridMapper $datagridMapper
+     */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('name');
     }
 
+    /**
+     * @param ListMapper $listMapper
+     */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
@@ -39,6 +52,10 @@ class EpisodeAdmin extends AbstractAdmin
         ;
     }
 
+    /**
+     * @param mixed $object
+     * @return string
+     */
     public function toString($object)
     {
         return $object instanceof EpisodeGenre

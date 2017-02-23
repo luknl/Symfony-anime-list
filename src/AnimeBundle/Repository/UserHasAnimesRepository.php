@@ -10,6 +10,10 @@ namespace AnimeBundle\Repository;
  */
 class UserHasAnimesRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $animeId
+     * @return mixed
+     */
     public function getFollowersById($animeId)
     {
         return $this->getEntityManager()
@@ -18,6 +22,10 @@ class UserHasAnimesRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleScalarResult();
     }
 
+    /**
+     * @param $animeId
+     * @return mixed
+     */
     public function getFavorisById($animeId)
     {
         return $this->getEntityManager()
@@ -26,6 +34,11 @@ class UserHasAnimesRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleScalarResult();
     }
 
+    /**
+     * @param $animeId
+     * @param $user
+     * @return array
+     */
     public function findByAnimeAndUserId($animeId, $user)
     {
         return $this->getEntityManager()
