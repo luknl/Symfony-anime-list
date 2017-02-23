@@ -63,6 +63,9 @@
           <li>
               <a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('src/imgs/power.png') }}" width="20px" alt=""></a>
           </li>
+          {% if is_granted('ROLE_ADMIN')  %}
+            <a href="{{ path('sonata_admin_dashboard') }}">Dashboard</a>
+          {% endif %}
         {% else %}
           <li>
               <a href="{{ path('fos_user_security_login') }}"><img src="{{ asset('src/imgs/login.png') }}" width="20px" alt=""></a>
