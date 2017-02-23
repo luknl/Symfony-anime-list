@@ -10,7 +10,23 @@
     <img src="{{ asset('src/imgs/yourname.png') }}" width="100%" alt="">
   </div>
   <div class="col s2">
-  <div class="date"><p>{{ "now"|date("d") }}<br>{{ "now"|date("M") }}</p></div>
+  <div class="aired_today">
+    <p class="date">{{ "now"|date("d") }}{{ "now"|date("M") }}</p>
+    <p>Aired today :</p>
+      {% for episode in episodes %}
+          {% if episode.aired|date('Y-m-d') == "now"|date('Y-m-d')  %}
+            <div>
+              <a href="{{ path('episode_show', { 'id': episode.id }) }}">
+                <p>{{episode.name}}</p>
+                <img src="{{episode.anime.picture}}" style="height: 100px;"/>
+              </a>
+              <a href="{{ path('anime_show', { 'id': episode.anime.id }) }}">
+                <p>From : {{episode.anime.name}}</p>
+              </a>
+            </div>
+          {% endif %}
+      {% endfor %}
+  </div>
   <img src="{{ asset('src/imgs/img3.png') }}" width="100%" alt="">
   <img src="{{ asset('src/imgs/img4.png') }}" width="100%" alt="">
   <img src="{{ asset('src/imgs/img5.png') }}" width="100%" alt="">

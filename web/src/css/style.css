@@ -49,7 +49,7 @@ header .user_infos {
   padding-top:20px;
 }
 
-.date {
+.aired_today {
   width: auto;
   height: 392px;
   background-color: #FFFFFF;
@@ -59,8 +59,9 @@ header .user_infos {
   margin-bottom: 10px;
 }
 
-.date p {
-  font-size:50px;
+.aired_today p.date {
+  font-size:40px;
+  margin: 20px 0;
 }
 
 .info {

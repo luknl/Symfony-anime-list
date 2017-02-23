@@ -20,7 +20,7 @@ class UserHasEpisodesController extends Controller
      * @Route("/", name="userhasepisodes_index")
      * @Method("GET")
      */
-    public function indexAction()
+    /*public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -35,7 +35,7 @@ class UserHasEpisodesController extends Controller
             'userHasEpisodes' => $userHasEpisodes,
             'episodeName' => $episodeName,
         ));
-    }
+    }*/
 
     /**
      * Creates a new userHasEpisodes entity.
@@ -43,7 +43,7 @@ class UserHasEpisodesController extends Controller
      * @Route("/new", name="userhasepisodes_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    /*public function newAction(Request $request)
     {
         $userHasEpisode = new Userhasepisodes();
         $form = $this->createForm('AnimeBundle\Form\UserHasEpisodesType', $userHasEpisode);
@@ -61,7 +61,7 @@ class UserHasEpisodesController extends Controller
             'userHasEpisode' => $userHasEpisode,
             'form' => $form->createView(),
         ));
-    }
+    }*/
 
     /**
      * Finds and displays a userHasEpisode entity.
@@ -69,7 +69,7 @@ class UserHasEpisodesController extends Controller
      * @Route("/{id}", name="userhasepisodes_show")
      * @Method("GET")
      */
-    public function showAction(UserHasEpisodes $userHasEpisode)
+    /*public function showAction(UserHasEpisodes $userHasEpisode)
     {
         $deleteForm = $this->createDeleteForm($userHasEpisode);
 
@@ -80,7 +80,7 @@ class UserHasEpisodesController extends Controller
             'episodeName' => $episodeName,
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Displays a form to edit an existing userHasEpisode entity.
@@ -88,7 +88,7 @@ class UserHasEpisodesController extends Controller
      * @Route("/{id}/edit", name="userhasepisodes_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, UserHasEpisodes $userHasEpisode)
+    /*public function editAction(Request $request, UserHasEpisodes $userHasEpisode)
     {
         $deleteForm = $this->createDeleteForm($userHasEpisode);
         $editForm = $this->createForm('AnimeBundle\Form\UserHasEpisodesType', $userHasEpisode);
@@ -105,7 +105,7 @@ class UserHasEpisodesController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+    }*/
 
     /**
      * Deletes a userHasEpisode entity.
@@ -113,7 +113,7 @@ class UserHasEpisodesController extends Controller
      * @Route("/{id}", name="userhasepisodes_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, UserHasEpisodes $userHasEpisode)
+    /*public function deleteAction(Request $request, UserHasEpisodes $userHasEpisode)
     {
         $form = $this->createDeleteForm($userHasEpisode);
         $form->handleRequest($request);
@@ -125,7 +125,7 @@ class UserHasEpisodesController extends Controller
         }
 
         return $this->redirectToRoute('userhasepisodes_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a userHasEpisode entity.
@@ -134,12 +134,12 @@ class UserHasEpisodesController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(UserHasEpisodes $userHasEpisode)
+    /*private function createDeleteForm(UserHasEpisodes $userHasEpisode)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('userhasepisodes_delete', array('id' => $userHasEpisode->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
-    }
+    }*/
 }
