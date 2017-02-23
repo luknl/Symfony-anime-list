@@ -1,15 +1,28 @@
-README A REDIGER
+Neussaipa - E11 - My Anime List
 ========================
 
+## Getting Started
+
+* Clone the project `git clone https://github.com/luknl/E17---Neussaipa.git`
+* Run composer `composer install`
+* Create the database `sf doctrine:database:create`
+> Import *Neussaipa.sql* in database in phpMyAdmin
+* Run the server `sf server:run`
+
+##Configs
+This project uses the framework *Symfony 3.2* for PHP
+
+The following Bundles are used : 
+* FOS User Bundle ([documentation](http://symfony.com/doc/current/bundles/FOSUserBundle/index.html))
+* Sonata Admin Bundle ([documentation](https://symfony.com/doc/current/bundles/SonataAdminBundle/index.html))
 
 
+#### For developpers
 
-# Commandes et explications de dev
-
-### Lancer le projet après récupération
+##### Lancer le projet après récupération
 
 
-* `git clone https://github.com/lien_de_notre_repo`
+* `git clone https://github.com/luknl/E17---Neussaipa.git`
 * `composer install`
 	- Port : 8889 (dépend de ce qu’on a mis dans MAMP)
 	- database password : root
@@ -20,13 +33,8 @@ README A REDIGER
 * (Si erreurs `sf doctrine:database:drop` puis recommencer)
 * `sf server:run` pour lancer le serveur
 
-### Remplir la BDD
-Pour faire les tests avec les formulaires des entités etc : Penser à créer d'abord des datas qui sont nécéssaires à d'autres entités car obligatoirement non NULL.
-Par exemple créer des Types et Genres car ils sont obligatoire pour la création d'Anime
 
-* Vous pouvez aussi simplement prendre le fichier SQL *seeds_bdd.sql* à la racine qui contient déjà des données lambda pour tester 
-
-###Autres commandes
+##### Autres commandes
 
 * `sf debug:container` => Liste tout les services
 * `sf debug:container | grep account` => Liste les services contenant « account » 
@@ -35,7 +43,7 @@ Par exemple créer des Types et Genres car ils sont obligatoire pour la créatio
 * `vendor/bin/phpunit` : Lancer le/les test(s) unitaire(s)
 
 
-### Jointures table 
+##### Jointures table 
 Lors de la génération de l'entity : $type object puis dans Entity/Anime.php
 ```php
 /**
@@ -74,7 +82,7 @@ return $this->render('anime/index.html.twig', array(
 ));
 ```
 
-### FOS User Bundle
+##### FOS User Bundle
 Routes d'accès : 
 * /login
 * /register
@@ -86,8 +94,7 @@ Créer un super user admin : `sf fos:user:create admin admin@admin.com admin --s
 
 Toutes les entities peuvent se gérer par les admins dans le back-office. Les fonctions de CRUD et pages liés qui avaient été générées à la base ont été commentées et sont normalement pas nécessaires puisqu'accessbiles dans le back-office.
 
+##### Optimization tools
 
-### Optimization tools
-
-Lancer PHPMetrics `php phpmetrics.phar --report-html=reportMetrics.html src/AnimeBundle`
-Lancer PHPcs `phpcs --standard=psr2 src/....path`
+* Lancer PHPMetrics `php phpmetrics.phar --report-html=reportMetrics.html src/AnimeBundle`
+* Lancer PHPcs `phpcs --standard=psr2 src/....path`
