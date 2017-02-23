@@ -16,4 +16,11 @@ class AnimeRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('id', $id)
             ->getResult();
     }
+    public function findByGenre($genreid)  {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM AnimeBundle:Anime p WHERE p.genre = :genreid'  )
+            ->setParameter('genreid', $genreid)
+            ->getResult();
+    }
+
 }

@@ -8,7 +8,7 @@
     </div>
 
 
-    <h3>Animes I follow</h3>
+    <h3>Animes I follow - {{ userHasAnimesCount }}</h3>
     <div class="row">
     {% for userHasAnime in userHasAnimes %}
         <div class="col s12 m6 l3">
@@ -49,10 +49,11 @@
     </div>
 
 
-    <h3>My reviews</h3>
+    <h3>My reviews  - {{ reviewsCount }}</h3>
     <div class="row">
         {% for review in reviews %}
             <div class="col s12 m12 l12" style="margin-bottom: 30px;">
+                <div class="divider"></div>
                 <p>
                     <span>For anime : <a href="{{ path('anime_show', { 'id': review.anime.id }) }}">{{review.anime.name}}</a></span>
                     <span style="margin-left: 30px; color: grey;">{% if review.user == user %}<a href="{{ path('animereview_edit', {'id': review.id}) }}">Edit</a>{% endif %}</span>

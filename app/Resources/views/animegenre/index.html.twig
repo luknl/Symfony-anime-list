@@ -1,31 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Animegenres list</h1>
+    <h1>Anime Genres</h1>
+    <p>Select a genre</p>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row genres">
         {% for animeGenre in animeGenres %}
-            <tr>
-                <td><a href="{{ path('animegenre_show', { 'id': animeGenre.id }) }}">{{ animeGenre.id }}</a></td>
-                <td>{{ animeGenre.name }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('animegenre_show', { 'id': animeGenre.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            <a href="{{ path('animegenre_show', {'id': animeGenre.id }) }}">
+                <div class="col s12 m6 l3">
+                    <div class="card">
+                        <div class="card-content">
+                            {{animeGenre.name}}
+                        </div>
+                    </div>
+                </div>
+            </a>
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
 
 {% endblock %}

@@ -46,11 +46,15 @@ class ProfileController extends Controller
         $em = $this->getDoctrine()->getManager();
         $userHasAnimes = $em->getRepository('AnimeBundle:UserHasAnimes')->findByUser( $this->getUser() );
         $reviews = $em->getRepository('AnimeBundle:AnimeReview')->findByUser( $this->getUser() );
+        $userHasAnimesCount = count($userHasAnimes);
+        $reviewsCount = count($reviews);
 
         return $this->render('@FOSUser/Profile/show.html.twig', array(
             'user' => $user,
             'userHasAnimes' => $userHasAnimes,
+            'userHasAnimesCount' => $userHasAnimesCount,
             'reviews' => $reviews,
+            'reviewsCount' => $reviewsCount,
         ));
     }
 

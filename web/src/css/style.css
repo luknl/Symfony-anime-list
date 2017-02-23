@@ -107,3 +107,11 @@ button.active, button.inactive:focus, button.inactive:hover {
 button.inactive, button.active:focus, button.active:hover {
      background-color: grey;
 }
+
+.genres a {
+  cursor: pointer;
+}
+
+.genres a:focus, .genres a:hover, .genres a:active {
+  color: red;
+}

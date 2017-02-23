@@ -31,6 +31,8 @@ class AnimeGenreController extends Controller
         ));
     }
 
+
+
     /**
      * Creates a new animeGenre entity.
      *
@@ -66,9 +68,14 @@ class AnimeGenreController extends Controller
     public function showAction(AnimeGenre $animeGenre)
     {
         #$deleteForm = $this->createDeleteForm($animeGenre);
+        $em = $this->getDoctrine()->getManager();
+        $animeGenres = $em->getRepository('AnimeBundle:AnimeGenre')->findAll();
+        $animes = $em->getRepository('AnimeBundle:Anime')->findByGenre( $animeGenre->getId() );;
 
         return $this->render('animegenre/show.html.twig', array(
-            'animeGenre' => $animeGenre,
+            'genre' => $animeGenre,
+            'animeGenres' => $animeGenres,
+            'animes' => $animes,
             #'delete_form' => $deleteForm->createView(),
         ));
     }

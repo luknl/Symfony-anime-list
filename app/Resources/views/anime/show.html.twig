@@ -33,7 +33,7 @@
             <p>
                 <strong>Score (avg) : </strong>
                 {% if notationAvg != 0 %}
-                    {{ notationAvg|round }}
+                    {{ notationAvg|round(1, 'floor') }}
                 {% else %}
                     Pas de notes
                 {% endif %}
