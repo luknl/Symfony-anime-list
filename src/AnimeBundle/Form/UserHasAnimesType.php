@@ -45,6 +45,4 @@ class UserHasAnimesType extends AbstractType
     {
         return 'animebundle_userhasanimes';
     }
-
-
 }

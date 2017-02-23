@@ -159,4 +159,3 @@ class AnimeReview
         return $this->created;
     }
 }
-

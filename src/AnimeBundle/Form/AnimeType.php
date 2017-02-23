@@ -37,7 +37,7 @@ class AnimeType extends AbstractType
             ->add('status')
             ->add('aired', DateTimeType::class, array(
                 'widget' => 'single_text',
-                'years' => range(1920,2050),
+                'years' => range(1920, 2050),
             ))
             ->add('producers')
             ->add('licensors')
@@ -67,6 +67,4 @@ class AnimeType extends AbstractType
     {
         return 'animebundle_anime';
     }
-
-
 }

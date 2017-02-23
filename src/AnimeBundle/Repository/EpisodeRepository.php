@@ -10,17 +10,18 @@ namespace AnimeBundle\Repository;
  */
 class EpisodeRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findAllById($id)  {
+    public function findAllById($id)
+    {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM AnimeBundle:Episode p WHERE p.anime = :id ORDER BY p.aired ASC'  )
+            ->createQuery('SELECT p FROM AnimeBundle:Episode p WHERE p.anime = :id ORDER BY p.aired ASC')
             ->setParameter('id', $id)
             ->getResult();
     }
 
-    public function findAllOrderByDate()  {
+    public function findAllOrderByDate()
+    {
         return $this->getEntityManager()
             ->createQuery('SELECT p FROM AnimeBundle:Episode p ORDER BY p.aired DESC')
             ->getResult();
     }
-
 }

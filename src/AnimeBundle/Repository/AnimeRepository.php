@@ -10,17 +10,18 @@ namespace AnimeBundle\Repository;
  */
 class AnimeRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findById($id)  {
+    public function findById($id)
+    {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM AnimeBundle:Anime p WHERE p.id = :id'  )
+            ->createQuery('SELECT p FROM AnimeBundle:Anime p WHERE p.id = :id')
             ->setParameter('id', $id)
             ->getResult();
     }
-    public function findByGenre($genreid)  {
+    public function findByGenre($genreid)
+    {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM AnimeBundle:Anime p WHERE p.genre = :genreid'  )
+            ->createQuery('SELECT p FROM AnimeBundle:Anime p WHERE p.genre = :genreid')
             ->setParameter('genreid', $genreid)
             ->getResult();
     }
-
 }

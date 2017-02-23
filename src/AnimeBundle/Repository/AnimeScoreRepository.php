@@ -13,7 +13,7 @@ class AnimeScoreRepository extends \Doctrine\ORM\EntityRepository
     public function getAverageById($animeId)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT AVG(p.value) FROM AnimeBundle:AnimeScore p WHERE p.anime = :id'  )
+            ->createQuery('SELECT AVG(p.value) FROM AnimeBundle:AnimeScore p WHERE p.anime = :id')
             ->setParameter('id', $animeId)
             ->getSingleScalarResult();
     }

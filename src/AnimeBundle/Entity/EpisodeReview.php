@@ -158,6 +158,4 @@ class EpisodeReview
     {
         return $this->created;
     }
-
 }
-

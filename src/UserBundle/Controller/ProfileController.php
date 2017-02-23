@@ -44,8 +44,8 @@ class ProfileController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $userHasAnimes = $em->getRepository('AnimeBundle:UserHasAnimes')->findByUser( $this->getUser() );
-        $reviews = $em->getRepository('AnimeBundle:AnimeReview')->findByUser( $this->getUser() );
+        $userHasAnimes = $em->getRepository('AnimeBundle:UserHasAnimes')->findByUser($this->getUser());
+        $reviews = $em->getRepository('AnimeBundle:AnimeReview')->findByUser($this->getUser());
         $userHasAnimesCount = count($userHasAnimes);
         $reviewsCount = count($reviews);
 
@@ -57,5 +57,4 @@ class ProfileController extends Controller
             'reviewsCount' => $reviewsCount,
         ));
     }
-
 }

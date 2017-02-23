@@ -30,7 +30,7 @@ class AnimeAdmin extends AbstractAdmin
             ->with('Additional Infos', array('class' => 'col-md-6'))
                 ->add('status')
                 ->add('aired', DateTimeType::class, array(
-                    'years' => range(1920,2050),
+                    'years' => range(1920, 2050),
                 ))
                 ->add('producers')
                 ->add('licensors')
@@ -64,7 +64,6 @@ class AnimeAdmin extends AbstractAdmin
             ->add('type.name')
             ->add('genre.name')
         ;
-
     }
 
     public function toString($object)

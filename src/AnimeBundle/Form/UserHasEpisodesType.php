@@ -45,6 +45,4 @@ class UserHasEpisodesType extends AbstractType
     {
         return 'animebundle_userhasepisodes';
     }
-
-
 }

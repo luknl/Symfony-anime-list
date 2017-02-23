@@ -63,4 +63,3 @@ class AnimeType
         return $this->name;
     }
 }
-

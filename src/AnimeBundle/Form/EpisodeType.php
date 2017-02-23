@@ -21,7 +21,7 @@ class EpisodeType extends AbstractType
             ->add('description')
             ->add('aired', DateTimeType::class, array(
                 'widget' => 'single_text',
-                'years' => range(1920,2050),
+                'years' => range(1920, 2050),
             ))
             ->add('anime', EntityType::class, array(
                 // query choices from this entity
@@ -51,6 +51,4 @@ class EpisodeType extends AbstractType
     {
         return 'animebundle_episode';
     }
-
-
 }

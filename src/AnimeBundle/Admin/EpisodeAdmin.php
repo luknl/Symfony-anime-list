@@ -21,7 +21,7 @@ class EpisodeAdmin extends AbstractAdmin
             ->add('duration')
             ->add('description')
             ->add('aired', DateTimeType::class, array(
-                'years' => range(1920,2050),
+                'years' => range(1920, 2050),
             ))
         ;
     }
