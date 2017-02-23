@@ -5,7 +5,8 @@ namespace AnimeBundle\Controller;
 use AnimeBundle\Entity\EpisodeScore;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Episodescore controller.
@@ -27,7 +28,7 @@ class EpisodeScoreController extends Controller
         $episodeScores = $em->getRepository('AnimeBundle:EpisodeScore')->findAll();
 
         $episodeName = [];
-        foreach($episodeScores as $episodeScore) {
+        foreach ($episodeScores as $episodeScore) {
             $episodeName[$episodeScore->getId()] = $episodeScore->getEpisode()->getName();
         }
 

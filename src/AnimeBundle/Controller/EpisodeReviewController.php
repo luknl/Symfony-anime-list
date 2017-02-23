@@ -5,7 +5,8 @@ namespace AnimeBundle\Controller;
 use AnimeBundle\Entity\EpisodeReview;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Episodereview controller.
@@ -27,7 +28,7 @@ class EpisodeReviewController extends Controller
         $episodeReviews = $em->getRepository('AnimeBundle:EpisodeReview')->findAll();
 
         $episodeName = [];
-        foreach($episodeReviews as $episodeReview) {
+        foreach ($episodeReviews as $episodeReview) {
             $episodeName[$episodeReview->getId()] = $episodeReview->getEpisode()->getName();
         }
 

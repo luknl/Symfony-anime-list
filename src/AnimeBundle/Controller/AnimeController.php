@@ -4,9 +4,11 @@ namespace AnimeBundle\Controller;
 
 use AnimeBundle\Entity\Anime;
 use AnimeBundle\Entity\UserHasAnimes;
+use Symfony\Bridge\Twig\Node\RenderBlockNode;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Anime controller.
@@ -20,6 +22,7 @@ class AnimeController extends Controller
      *
      * @Route("/", name="anime_index")
      * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
@@ -29,7 +32,7 @@ class AnimeController extends Controller
 
         $typeName = [];
         $genreName = [];
-        foreach($animes as $anime) {
+        foreach ($animes as $anime) {
             $typeName[$anime->getId()] = $anime->getType()->getName();
             $genreName[$anime->getId()] = $anime->getGenre()->getName();
         }
@@ -42,40 +45,16 @@ class AnimeController extends Controller
     }
 
     /**
-     * Creates a new anime entity.
-     *
-     * @Route("/new", name="anime_new")
-     * @Method({"GET", "POST"})
-     */
-    /*public function newAction(Request $request)
-    {
-        $anime = new Anime();
-        $form = $this->createForm('AnimeBundle\Form\AnimeType', $anime);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($anime);
-            $em->flush($anime);
-
-            return $this->redirectToRoute('anime_show', array('id' => $anime->getId()));
-        }
-
-        return $this->render('anime/new.html.twig', array(
-            'anime' => $anime,
-            'form' => $form->createView(),
-        ));
-    }*/
-
-    /**
      * Finds and displays a anime entity.
+     * @param Anime $anime
      *
      * @Route("/{id}", name="anime_show")
      * @Method("GET")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showAction(Anime $anime)
     {
-        #$deleteForm = $this->createDeleteForm($anime);
+        $animeId = $anime->getId();
 
         $em = $this->getDoctrine()->getManager();
 
@@ -83,14 +62,14 @@ class AnimeController extends Controller
         $genreName = $anime->getGenre()->getName();
 
         $user = $this->getUser();
-        $episodes = $em->getRepository('AnimeBundle:Episode')->findAllById( $anime->getId() );
+        $episodes = $em->getRepository('AnimeBundle:Episode')->findAllById($animeId);
         $episodeCount = count($episodes);
-        $reviews = $em->getRepository('AnimeBundle:AnimeReview')->findAllById( $anime->getId() );
-        $notationAvg = $em->getRepository('AnimeBundle:AnimeScore')->getAverageById( $anime->getId() );
-        $followers = $em->getRepository('AnimeBundle:UserHasAnimes')->getFollowersById( $anime->getId() );
-        $favoris = $em->getRepository('AnimeBundle:UserHasAnimes')->getFavorisById( $anime->getId() );
+        $reviews = $em->getRepository('AnimeBundle:AnimeReview')->findAllById($animeId);
+        $notationAvg = $em->getRepository('AnimeBundle:AnimeScore')->getAverageById($animeId);
+        $followers = $em->getRepository('AnimeBundle:UserHasAnimes')->getFollowersById($animeId);
+        $favoris = $em->getRepository('AnimeBundle:UserHasAnimes')->getFavorisById($animeId);
 
-        $following = $em->getRepository('AnimeBundle:UserHasAnimes')->findByAnimeAndUserId( $anime->getId(), $user );
+        $following = $em->getRepository('AnimeBundle:UserHasAnimes')->findByAnimeAndUserId($animeId, $user);
 
         return $this->render('anime/show.html.twig', array(
             'anime' => $anime,
@@ -104,19 +83,18 @@ class AnimeController extends Controller
             'followers' => $followers,
             'favoris' => $favoris,
             'following' => $following,
-            #'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
+     * Follow an anime
      * @param Anime $anime
      *
      * @Route("/{id}/follow", requirements={"id" = "\d+"}, name="anime_follow")
      * @return RedirectResponse
-     *
      */
-    public function followAction(Anime $anime){
-
+    public function followAction(Anime $anime)
+    {
         $userHasAnimes = new UserHasAnimes();
 
         $userHasAnimes->setUser($this->getUser());
@@ -127,127 +105,67 @@ class AnimeController extends Controller
         $em->persist($userHasAnimes);
         $em->flush($userHasAnimes);
 
-        return $this->redirectToRoute('anime_show', array( 'id' => $anime->getId() ));
+        return $this->redirectToRoute('anime_show', array('id' => $anime->getId()));
     }
 
     /**
+     * Unfollow an anime
      * @param Anime $anime
      *
      * @Route("/{id}/unfollow", requirements={"id" = "\d+"}, name="anime_unfollow")
      * @return RedirectResponse
-     *
      */
-    public function unfollowAction(Anime $anime){
-
+    public function unfollowAction(Anime $anime)
+    {
+        $userId = $this->getUser()->getId();
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('AnimeBundle:UserHasAnimes');
 
-        $userHasAnimes = $repository->findByAnimeAndUserId($anime->getId(), $this->getUser()->getId());
+        $userHasAnimes = $repository->findByAnimeAndUserId($anime->getId(), $userId);
         $em->remove($userHasAnimes[0]);
         $em->flush();
 
-        return $this->redirectToRoute('anime_show', array( 'id' => $anime->getId() ));
+        return $this->redirectToRoute('anime_show', array('id' => $anime->getId()));
     }
 
     /**
+     * Favorite an anime
      * @param Anime $anime
      *
      * @Route("/{id}/fav", requirements={"id" = "\d+"}, name="anime_fav")
      * @return RedirectResponse
-     *
      */
-    public function favAction(Anime $anime){
-
+    public function favAction(Anime $anime)
+    {
+        $userId = $this->getUser()->getId();
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('AnimeBundle:UserHasAnimes');
-        $userHasAnimes = $repository->findByAnimeAndUserId($anime->getId(), $this->getUser()->getId());
+        $userHasAnimes = $repository->findByAnimeAndUserId($anime->getId(), $userId);
 
-        if ($userHasAnimes != null){
+        if ($userHasAnimes != null) {
             $userHasAnimes[0]->setFavori('1');
             $em->flush();
         }
 
-        return $this->redirectToRoute('anime_show', array( 'id' => $anime->getId() ));
+        return $this->redirectToRoute('anime_show', array('id' => $anime->getId()));
     }
 
     /**
+     * Unfavorite an anime
      * @param Anime $anime
      *
      * @Route("/{id}/unfav", requirements={"id" = "\d+"}, name="anime_unfav")
      * @return RedirectResponse
-     *
      */
-    public function unfavAction(Anime $anime){
-
+    public function unfavAction(Anime $anime)
+    {
+        $userId = $this->getUser()->getId();
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('AnimeBundle:UserHasAnimes');
-        $userHasAnimes = $repository->findByAnimeAndUserId($anime->getId(), $this->getUser()->getId());
+        $userHasAnimes = $repository->findByAnimeAndUserId($anime->getId(), $userId);
         $userHasAnimes[0]->setFavori('0');
         $em->flush();
 
-        return $this->redirectToRoute('anime_show', array( 'id' => $anime->getId() ));
+        return $this->redirectToRoute('anime_show', array('id' => $anime->getId()));
     }
-
-
-
-    /**
-     * Displays a form to edit an existing anime entity.
-     *
-     * @Route("/{id}/edit", name="anime_edit")
-     * @Method({"GET", "POST"})
-     */
-    /*public function editAction(Request $request, Anime $anime)
-    {
-        $deleteForm = $this->createDeleteForm($anime);
-        $editForm = $this->createForm('AnimeBundle\Form\AnimeType', $anime);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('anime_edit', array('id' => $anime->getId()));
-        }
-
-        return $this->render('anime/edit.html.twig', array(
-            'anime' => $anime,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }*/
-
-    /**
-     * Deletes a anime entity.
-     *
-     * @Route("/{id}", name="anime_delete")
-     * @Method("DELETE")
-     */
-    /*public function deleteAction(Request $request, Anime $anime)
-    {
-        $form = $this->createDeleteForm($anime);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($anime);
-            $em->flush($anime);
-        }
-
-        return $this->redirectToRoute('anime_index');
-    }*/
-
-    /**
-     * Creates a form to delete a anime entity.
-     *
-     * @param Anime $anime The anime entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    /*private function createDeleteForm(Anime $anime)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('anime_delete', array('id' => $anime->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }*/
 }
