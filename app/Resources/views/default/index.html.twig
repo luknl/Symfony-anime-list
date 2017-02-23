@@ -8,6 +8,43 @@
   </div>
   <div class="col s5">
     <img src="{{ asset('src/imgs/yourname.png') }}" width="100%" alt="">
+    <h3>Popularity By</h3>
+    <div>
+      <div class="row ranking">
+        <p class="title">#Followers</p>
+        {% for followerRanking in followersRanking %}
+            <div class="col l4 m4 s12">
+              <p>{{ followerRanking.followers }} followers</p>
+              <div class="divider"></div>
+              <p>{{ followerRanking[0].name }}</p>
+            </div>
+        {% endfor %}
+      </div>
+
+      <div class="row ranking">
+        <p class="title">#Favoris</p>
+        {% for favoriRanking in favorisRanking %}
+          <div class="col l4 m4 s12">
+            <p>{{ favoriRanking.followers }} favorites </p>
+            <div class="divider"></div>
+            <p>{{ favoriRanking[0].name }}</p>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="row ranking">
+        <p class="title">#Score</p>
+        {% for score in scoreRanking %}
+          <div class="col l4 m4 s12">
+            <p>{{ score.score }} (avg)</p>
+            <div class="divider"></div>
+            <p>{{ score[0].name }}</p>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+
   </div>
   <div class="col s2">
   <div class="aired_today">

@@ -49,14 +49,26 @@ class UserHasAnimesRepository extends \Doctrine\ORM\EntityRepository
     }
 
     /**
-     * @return array
-     */
-    /*public function getFollowersRanking()
+    * @return array
+    */
+    public function getFollowersRanking()
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT count(p) AS p.followers, p.anime FROM AnimeBundle:UserHasAnimes p GROUP BY p.anime ORDER BY p.followers DESC ')
+            ->createQuery('SELECT COUNT(p.id) as followers, partial a.{id, name} FROM AnimeBundle:UserHasAnimes p JOIN AnimeBundle:Anime AS a WITH p.anime = a GROUP BY p.anime ORDER BY followers DESC ')
+            ->setMaxResults(3)
             ->getResult();
-    }*/
+    }
 
+    /**
+     *
+     * @return array
+     */
+    public function getFavorisRanking()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT COUNT(p.id) as followers, partial a.{id, name} FROM AnimeBundle:UserHasAnimes p JOIN AnimeBundle:Anime AS a WITH p.anime = a WHERE p.favori = 1 GROUP BY p.anime ORDER BY followers DESC ')
+            ->setMaxResults(3)
+            ->getResult();
+    }
 
 }
