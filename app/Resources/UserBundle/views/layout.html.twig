@@ -1,33 +1,87 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-    </head>
-    <body>
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            {% endif %}
-        </div>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Symfony anime{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('src/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('src/css/anime.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
 
-        {% if app.request.hasPreviousSession %}
-            {% for type, messages in app.session.flashbag.all() %}
-                {% for message in messages %}
-                    <div class="flash-{{ type }}">
-                        {{ message }}
+<div style="float:left;margin-left:20px;margin-top:20px;" class="ads">
+    <img src="{{ asset('src/imgs/chocoball.png') }}" style="position:fixed" width="200px" alt="">
+    <img src="{{ asset('src/imgs/img7.png') }}" style="position:fixed;margin-top:400px" width="200px;" alt="">
+</div>
+
+<div style="float:right;margin-right:20px;margin-top:20px;" class="ads">
+    <img src="{{ asset('src/imgs/img10.png') }}" style="position:fixed" width="200px" alt="">
+    <img src="{{ asset('src/imgs/tenga.png') }}" style="position:fixed;margin-top:550px" width="200px;" alt="">
+</div>
+
+<header>
+
+    <a href="{{ path('homepage') }}"><img src="{{ asset('src/imgs/logo.png') }}" class="logo" width="150px" alt=""></a>
+    <img src="{{ asset('src/imgs/img1.png') }}" width="600px" alt="">
+    <ul>
+
+        <a href="{{ path('anime_index') }}">
+            <li>
+                <div class="menu">
+                    <p class="menu__text">. Animes .</p>
+                </div>
+            </li>
+        </a>
+
+        <a href="{{ path('userhasanimes_index') }}">
+            <li>
+                <div class="menu">
+                    <p class="menu__text"> Planning *</p>
+                </div>
+            </li>
+        </a>
+
+        <a href="{{ path('animegenre_index') }}">
+            <li>
+                <div class="menu">
+                    <p class="menu__text"> ~ Genres ~ </p>
+                </div>
+            </li>
+        </a>
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li>
+                <a href="{{ path('fos_user_profile_show') }}">
+                    <div class="menu">
+                        <p class="menu__text"> ~ Mon Profil ~ </p>
                     </div>
-                {% endfor %}
-            {% endfor %}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_security_logout') }}"><img src="{{ asset('src/imgs/power.png') }}" width="20px" alt=""></a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ path('fos_user_security_login') }}"><img src="{{ asset('src/imgs/login.png') }}" width="20px" alt=""></a>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_registration_register') }}"><img src="{{ asset('src/imgs/register.png') }}" width="20px" alt=""></a>
+            </li>
         {% endif %}
 
-        <div>
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
-        </div>
-    </body>
+    </ul>
+</header>
+
+<div class="container center-align">
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+{% block javascripts %}{% endblock %}
+</body>
 </html>

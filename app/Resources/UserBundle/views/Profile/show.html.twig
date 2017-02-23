@@ -2,5 +2,9 @@
 
 {% block fos_user_content %}
     <h1>tesssssst</h1>
-{% include "@FOSUser/Profile/show_content.html.twig" %}
+    <div class="fos_user_user_show">
+        <p>Je change le contenu ici</p>
+        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    </div>
 {% endblock fos_user_content %}
