@@ -11,6 +11,7 @@
 
 namespace UserBundle\Controller;
 
+use AnimeBundle\Entity\UserHasAnimes;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -42,8 +43,14 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
+        $em = $this->getDoctrine()->getManager();
+        $userHasAnimes = $em->getRepository('AnimeBundle:UserHasAnimes')->findByUser( $this->getUser() );
+        $reviews = $em->getRepository('AnimeBundle:AnimeReview')->findByUser( $this->getUser() );
+
         return $this->render('@FOSUser/Profile/show.html.twig', array(
             'user' => $user,
+            'userHasAnimes' => $userHasAnimes,
+            'reviews' => $reviews,
         ));
     }
 

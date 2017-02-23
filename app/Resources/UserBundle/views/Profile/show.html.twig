@@ -1,10 +1,68 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
-    <h1>tesssssst</h1>
+    <h1>Mon profil</h1>
     <div class="fos_user_user_show">
-        <p>Je change le contenu ici</p>
-        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
     </div>
+
+
+    <h3>Animes I follow</h3>
+    <div class="row">
+    {% for userHasAnime in userHasAnimes %}
+        <div class="col s12 m6 l3">
+            <div class="card">
+                <div class="card-content">
+                    <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}">
+                        <img src="{{userHasAnime.anime.picture}}" height="320px" title="{{userHasAnime.anime.name}}"/>
+                    </a>
+                    <p>{{userHasAnime.anime.name}}</p>
+                </div>
+                <div class="card-action link">
+                    <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}"><button type="button" class="btn btn-lg btn-primary">See details</button></a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <h3>My favorites</h3>
+    <div class="row">
+    {% for userHasAnime in userHasAnimes %}
+        {% if userHasAnime.favori == 1 %}
+            <div class="col s12 m6 l3">
+                <div class="card">
+                    <div class="card-content">
+                        <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}">
+                            <img src="{{userHasAnime.anime.picture}}" height="320px" title="{{userHasAnime.anime.name}}"/>
+                        </a>
+                        <p>{{userHasAnime.anime.name}}</p>
+                    </div>
+                    <div class="card-action link">
+                        <a href="{{ path('anime_show', { 'id': userHasAnime.anime.id }) }}"><button type="button" class="btn btn-lg btn-primary">See details</button></a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+
+    <h3>My reviews</h3>
+    <div class="row">
+        {% for review in reviews %}
+            <div class="col s12 m12 l12" style="margin-bottom: 30px;">
+                <p>
+                    <span>For anime : <a href="{{ path('anime_show', { 'id': review.anime.id }) }}">{{review.anime.name}}</a></span>
+                    <span style="margin-left: 30px; color: grey;">{% if review.user == user %}<a href="{{ path('animereview_edit', {'id': review.id}) }}">Edit</a>{% endif %}</span>
+                </p>
+                <span>{{review.value}}</span>
+                <span style="float: right">{% if review.created %}{{ review.created|date('Y-m-d') }}{% endif %}</span>
+            </div>
+        {% endfor %}
+    </div>
+
+
 {% endblock fos_user_content %}
+
