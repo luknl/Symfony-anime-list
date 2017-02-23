@@ -16,4 +16,11 @@ class EpisodeRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('id', $id)
             ->getResult();
     }
+
+    public function findAllOrderByDate()  {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM AnimeBundle:Episode p ORDER BY p.aired DESC')
+            ->getResult();
+    }
+
 }

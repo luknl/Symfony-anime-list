@@ -20,11 +20,11 @@ class EpisodeController extends Controller
      * @Route("/", name="episode_index")
      * @Method("GET")
      */
-    /*public function indexAction()
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $episodes = $em->getRepository('AnimeBundle:Episode')->findAll();
+        $episodes = $em->getRepository('AnimeBundle:Episode')->findAllOrderByDate();
 
         $animeName = [];
         foreach($episodes as $episode) {
@@ -35,7 +35,7 @@ class EpisodeController extends Controller
             'episodes' => $episodes,
             'animeName' => $animeName,
         ));
-    }*/
+    }
 
     /**
      * Creates a new episode entity.

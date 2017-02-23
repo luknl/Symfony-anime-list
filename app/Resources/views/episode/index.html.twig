@@ -1,39 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Episodes list</h1>
+    <h1>Planning of episodes</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Duration</th>
-                <th>Description</th>
-                <th>Aired</th>
-                <th>Anime</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+
+    <h3>Today</h3>
+    {% for episode in episodes %}
+        {% if episode.aired|date('Y-m-d') == "now"|date('Y-m-d')  %}
+            <div class="col s12 m12 l12">
+                <div class="card">
+                    <div class="card_content">
+                        <p>{% if episode.aired %}{{ episode.aired|date('m-d-Y') }}{% endif %}</p>
+                        <a href="{{ path('episode_show', { 'id': episode.id }) }}"><p>{{episode.name}}</p></a>
+                        <p>Anime :<a href="{{ path('anime_show', { 'id': episode.anime.id }) }}"> {{ animeName[episode.id]  }}</a></p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <h3>Episodes to come</h3>
         {% for episode in episodes %}
-            <tr>
-                <td><a href="{{ path('episode_show', { 'id': episode.id }) }}">{{ episode.id }}</a></td>
-                <td>{{ episode.name }}</td>
-                <td>{{ episode.duration }}</td>
-                <td>{{ episode.description }}</td>
-                <td>{% if episode.aired %}{{ episode.aired|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ animeName[episode.id]  }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('episode_show', { 'id': episode.id }) }}">show</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+            {% if episode.aired|date('Y-m-d') > "now"|date('Y-m-d')  %}
+                <div class="col s12 m12 l12">
+                    <div class="card">
+                        <div class="card_content">
+                            <p>{% if episode.aired %}{{ episode.aired|date('m-d-Y') }}{% endif %}</p>
+                            <a href="{{ path('episode_show', { 'id': episode.id }) }}"><p>{{episode.name}}</p></a>
+                            <p>Anime :<a href="{{ path('anime_show', { 'id': episode.anime.id }) }}"> {{ animeName[episode.id]  }}</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         {% endfor %}
-        </tbody>
-    </table>
-
+    <h3>Past episodes</h3>
+        {% for episode in episodes %}
+            {% if episode.aired|date('Y-m-d') < "now"|date('Y-m-d')  %}
+                <div class="col s12 m12 l12">
+                    <div class="card">
+                        <div class="card_content">
+                            <p>{% if episode.aired %}{{ episode.aired|date('m-d-Y') }}{% endif %}</p>
+                            <a href="{{ path('episode_show', { 'id': episode.id }) }}"><p>{{episode.name}}</p></a>
+                            <p>Anime :<a href="{{ path('anime_show', { 'id': episode.anime.id }) }}"> {{ animeName[episode.id]  }}</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
 {% endblock %}
