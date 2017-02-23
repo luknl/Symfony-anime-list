@@ -51,9 +51,9 @@ class ProfileController extends Controller
 
         $favorisCount = 0;
         foreach ($userHasAnimes as $userHasAnime) {
-          if ($userHasAnime->getFavori() == 1) {
-            $favorisCount ++;
-          }
+            if ($userHasAnime->getFavori() == 1) {
+                $favorisCount ++;
+            }
         }
 
         return $this->render('@FOSUser/Profile/show.html.twig', array(
