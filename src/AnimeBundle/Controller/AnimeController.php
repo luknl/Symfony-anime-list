@@ -27,9 +27,7 @@ class AnimeController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $animes = $em->getRepository('AnimeBundle:Anime')->findAll();
-
         $typeName = [];
         $genreName = [];
         foreach ($animes as $anime) {
@@ -55,12 +53,9 @@ class AnimeController extends Controller
     public function showAction(Anime $anime)
     {
         $animeId = $anime->getId();
-
         $em = $this->getDoctrine()->getManager();
-
         $typeName = $anime->getType()->getName();
         $genreName = $anime->getGenre()->getName();
-
         $user = $this->getUser();
         $episodes = $em->getRepository('AnimeBundle:Episode')->findAllById($animeId);
         $episodeCount = count($episodes);
@@ -68,7 +63,6 @@ class AnimeController extends Controller
         $notationAvg = $em->getRepository('AnimeBundle:AnimeScore')->getAverageById($animeId);
         $followers = $em->getRepository('AnimeBundle:UserHasAnimes')->getFollowersById($animeId);
         $favoris = $em->getRepository('AnimeBundle:UserHasAnimes')->getFavorisById($animeId);
-
         $following = $em->getRepository('AnimeBundle:UserHasAnimes')->findByAnimeAndUserId($animeId, $user);
 
         return $this->render('anime/show.html.twig', array(
@@ -96,11 +90,9 @@ class AnimeController extends Controller
     public function followAction(Anime $anime)
     {
         $userHasAnimes = new UserHasAnimes();
-
         $userHasAnimes->setUser($this->getUser());
         $userHasAnimes->setAnime($anime);
         $userHasAnimes->setFavori('false');
-
         $em = $this->getDoctrine()->getManager();
         $em->persist($userHasAnimes);
         $em->flush($userHasAnimes);
@@ -120,7 +112,6 @@ class AnimeController extends Controller
         $userId = $this->getUser()->getId();
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('AnimeBundle:UserHasAnimes');
-
         $userHasAnimes = $repository->findByAnimeAndUserId($anime->getId(), $userId);
         $em->remove($userHasAnimes[0]);
         $em->flush();
@@ -141,7 +132,6 @@ class AnimeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('AnimeBundle:UserHasAnimes');
         $userHasAnimes = $repository->findByAnimeAndUserId($anime->getId(), $userId);
-
         if ($userHasAnimes != null) {
             $userHasAnimes[0]->setFavori('1');
             $em->flush();
