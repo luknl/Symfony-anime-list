@@ -186,4 +186,3 @@ class Episode
         return $this->anime;
     }
 }
-

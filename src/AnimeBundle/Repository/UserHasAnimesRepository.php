@@ -13,7 +13,7 @@ class UserHasAnimesRepository extends \Doctrine\ORM\EntityRepository
     public function getFollowersById($animeId)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT COUNT(p) FROM AnimeBundle:UserHasAnimes p WHERE p.anime = :id'  )
+            ->createQuery('SELECT COUNT(p) FROM AnimeBundle:UserHasAnimes p WHERE p.anime = :id')
             ->setParameter('id', $animeId)
             ->getSingleScalarResult();
     }
@@ -21,7 +21,7 @@ class UserHasAnimesRepository extends \Doctrine\ORM\EntityRepository
     public function getFavorisById($animeId)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT COUNT(p) FROM AnimeBundle:UserHasAnimes p WHERE p.anime = :id AND p.favori = 1'  )
+            ->createQuery('SELECT COUNT(p) FROM AnimeBundle:UserHasAnimes p WHERE p.anime = :id AND p.favori = 1')
             ->setParameter('id', $animeId)
             ->getSingleScalarResult();
     }
@@ -29,10 +29,9 @@ class UserHasAnimesRepository extends \Doctrine\ORM\EntityRepository
     public function findByAnimeAndUserId($animeId, $user)
     {
         return $this->getEntityManager()
-            ->createQuery('SELECT p FROM AnimeBundle:UserHasAnimes p WHERE p.anime = :id AND p.user = :user'  )
+            ->createQuery('SELECT p FROM AnimeBundle:UserHasAnimes p WHERE p.anime = :id AND p.user = :user')
             ->setParameter('id', $animeId)
             ->setParameter('user', $user)
             ->getResult();
     }
-
 }

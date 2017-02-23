@@ -90,4 +90,4 @@ Toutes les entities peuvent se gérer par les admins dans le back-office. Les fo
 ### Optimization tools
 
 Lancer PHPMetrics `php phpmetrics.phar --report-html=reportMetrics.html src/AnimeBundle`
-
+Lancer PHPcs `phpcs --standard=psr2 src/....path`

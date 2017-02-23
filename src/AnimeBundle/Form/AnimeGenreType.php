@@ -33,6 +33,4 @@ class AnimeGenreType extends AbstractType
     {
         return 'animebundle_animegenre';
     }
-
-
 }

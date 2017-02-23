@@ -26,7 +26,7 @@ class AnimeScoreType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => false,
                 'expanded' => false, // true : radio, false : select
-                'query_builder' => function(AnimeRepository $repository ) use ( $anime ) {
+                'query_builder' => function (AnimeRepository $repository) use ($anime) {
                     return $repository->createQueryBuilder('w')
                         ->where('w.id = :anime')
                         ->setParameter('anime', $anime);
@@ -59,6 +59,4 @@ class AnimeScoreType extends AbstractType
     {
         return 'animebundle_animescore';
     }
-
-
 }

@@ -123,4 +123,3 @@ class AnimeScore
         return $this->value;
     }
 }
-

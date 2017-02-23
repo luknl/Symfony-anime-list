@@ -51,7 +51,7 @@ class AnimeScoreController extends Controller
 
             $animeid = $request->query->get('anime');
             if (!$animeid) {
-                throw $this->createNotFoundException('This road does not exist, must be associated with an anime');
+                throw $this->createNotFoundException('No route found');
             }
 
             $animeScore->setUser($this->getUser());

@@ -63,4 +63,3 @@ class AnimeGenre
         return $this->name;
     }
 }
-

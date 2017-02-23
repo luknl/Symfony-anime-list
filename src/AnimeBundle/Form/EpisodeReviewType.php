@@ -45,6 +45,4 @@ class EpisodeReviewType extends AbstractType
     {
         return 'animebundle_episodereview';
     }
-
-
 }

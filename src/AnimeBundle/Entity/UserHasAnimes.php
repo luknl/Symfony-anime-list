@@ -123,4 +123,3 @@ class UserHasAnimes
         return $this->favori;
     }
 }
-

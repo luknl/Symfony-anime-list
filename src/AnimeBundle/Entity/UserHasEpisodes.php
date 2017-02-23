@@ -123,4 +123,3 @@ class UserHasEpisodes
         return $this->viewed;
     }
 }
-

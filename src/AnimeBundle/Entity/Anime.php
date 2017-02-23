@@ -464,4 +464,3 @@ class Anime
         return $this->rating;
     }
 }
-

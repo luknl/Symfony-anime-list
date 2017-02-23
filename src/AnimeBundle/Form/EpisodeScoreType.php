@@ -50,6 +50,4 @@ class EpisodeScoreType extends AbstractType
     {
         return 'animebundle_episodescore';
     }
-
-
 }
