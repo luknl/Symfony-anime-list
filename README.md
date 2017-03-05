@@ -1,9 +1,9 @@
-Neussaipa - E11 - My Anime List
+Symfony Anime List
 ========================
 
 ## Getting Started
 
-* Clone the project `git clone https://github.com/luknl/E17---Neussaipa.git`
+* Clone the project `git clone https://github.com/luknl/Symfony-anime-list.git`
 * Run composer `composer install`
 * Create the database `sf doctrine:database:create`
 
@@ -27,7 +27,7 @@ The following Bundles are used :
 ##### Lancer le projet après récupération
 
 
-* `git clone https://github.com/luknl/E17---Neussaipa.git`
+* `git clone https://github.com/luknl/Symfony-anime-list.git`
 * `composer install`
 	- Port : 3306 (dépendant de ce que vous avez dans MAMP)
 	- database password : root
